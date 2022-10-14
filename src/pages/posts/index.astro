@@ -1,0 +1,16 @@
+---
+import { SITE } from "src/config";
+import Posts from "@layouts/Posts.astro";
+import getSortedPosts from "@utils/getSortedPosts";
+import getPageNumbers from "@utils/getPageNumbers";
+import type { Frontmatter } from "src/types";
+import external from "../../contents/external.json";
+
+const posts = await Astro.glob<Frontmatter>("../../contents/*.md");
+const allPosts = [...posts, ...external];
+
+const sortedPosts = getSortedPosts(allPosts);
+
+---
+
+<Posts posts={sortedPosts} />
