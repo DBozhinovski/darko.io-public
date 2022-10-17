@@ -22,70 +22,71 @@ const sortedPosts = getSortedPosts(allPosts);
 
 <Layout>
   <Header />
-  <main id="main-content">
-    <section id="hero">
-      <h1>Darko's corner</h1>
-      <p>
-        👋 Hi! I'm Darko. I write software, mostly for the web. I'm also a writer, speaker, community person and Linux nerd.
-        I enjoy working with the web platform, warts included and I remember the IE6 days (yes, I’ve been in this industry for 15+ years now 😊).
-        <br /><br />
-        🧪 I love the experimental and trailblazing aspect of web development - development should have at least SOME fun in it 😉
-        <br />
-        👥 I run a <a href="https://beerjs.mk">meetup</a>, help organize a <a href="https://devcon.dev">conference</a>, have taught at web academies, and mentored colleagues. I’ve also spoken at meetups and conferences.
-        <br />
-        💻 I’ve led teams, built apps, and created libraries. I’ve freelanced and worked as an individual contributor and in teams. I love FOSS and contribute when I can. My experience spans a large number of industries. You can find my portfolio <a href="https://work.darko.io">here</a>.
-        <br />
-        🌟 And, I’m very much looking to get into DevRel 😊
-      </p>
-      <div class="social-wrapper">
-        <div class="whitespace-nowrap">Darko around the web:</div>
-        <div class="social-icons">
-          {
-            SOCIALS.filter((social) => social.active).map((social) => (
-              <LinkButton
-                href={social.href}
-                className="link-button"
-                title={social.name}
-              >
-                <Fragment set:html={socialIcons[social.name]} />
-              </LinkButton>
-            ))
-          }
+  <div id="swup">
+    <main id="main-content">
+      <section id="hero">
+        <h1>Darko's corner</h1>
+        <p>
+          👋 Hi! I'm Darko. I write software, mostly for the web. I'm also a writer, speaker, community person and Linux nerd.
+          I enjoy working with the web platform, warts included and I remember the IE6 days (yes, I’ve been in this industry for 15+ years now 😊).
+          <br /><br />
+          🧪 I love the experimental and trailblazing aspect of web development - development should have at least SOME fun in it 😉
+          <br />
+          👥 I run a <a href="https://beerjs.mk">meetup</a>, help organize a <a href="https://devcon.dev">conference</a>, have taught at web academies, and mentored colleagues. I’ve also spoken at meetups and conferences.
+          <br />
+          💻 I’ve led teams, built apps, and created libraries. I’ve freelanced and worked as an individual contributor and in teams. I love FOSS and contribute when I can. My experience spans a large number of industries. You can find my portfolio <a href="https://work.darko.io">here</a>.
+          <br />
+          🌟 And, I’m very much looking to get into DevRel 😊
+        </p>
+        <div class="social-wrapper">
+          <div class="whitespace-nowrap">Darko around the web:</div>
+          <div class="social-icons">
+            {
+              SOCIALS.filter((social) => social.active).map((social) => (
+                <LinkButton
+                  href={social.href}
+                  className="link-button"
+                  title={social.name}
+                >
+                  <Fragment set:html={socialIcons[social.name]} />
+                </LinkButton>
+              ))
+            }
+          </div>
         </div>
-      </div>
-    </section>
-
-    <Hr />
-
-    <section id="recent-posts">
-      <h2>Recent Posts</h2>
-      <ul>
-        {
-          sortedPosts.map(
-            ({ frontmatter }, index) =>
-              index < 4 && (
-                <Card
-                  href={frontmatter.url || `/posts/${slugify(frontmatter)}`}
-                  post={frontmatter}
-                  secHeading={false}
-                />
-              )
-          )
-        }
-      </ul>
-      <div class="all-posts-btn-wrapper">
-        <LinkButton href="/posts">
-          All Posts
-          <svg xmlns="http://www.w3.org/2000/svg"
-            ><path
-              d="m11.293 17.293 1.414 1.414L19.414 12l-6.707-6.707-1.414 1.414L15.586 11H6v2h9.586z"
-            ></path>
-          </svg>
-        </LinkButton>
-      </div>
-    </section>
-  </main>
-
+      </section>
+  
+      <Hr />
+  
+      <section id="recent-posts">
+        <h2>Recent Posts</h2>
+        <ul>
+          {
+            sortedPosts.map(
+              ({ frontmatter }, index) =>
+                index < 4 && (
+                  <Card
+                    href={frontmatter.url || `/posts/${slugify(frontmatter)}`}
+                    post={frontmatter}
+                    secHeading={false}
+                  />
+                )
+            )
+          }
+        </ul>
+        <div class="all-posts-btn-wrapper">
+          <LinkButton href="/posts">
+            All Posts
+            <svg xmlns="http://www.w3.org/2000/svg"
+              ><path
+                d="m11.293 17.293 1.414 1.414L19.414 12l-6.707-6.707-1.414 1.414L15.586 11H6v2h9.586z"
+              ></path>
+            </svg>
+          </LinkButton>
+        </div>
+      </section>
+    </main>
+  </div>
   <Footer />
 </Layout>
 

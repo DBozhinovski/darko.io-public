@@ -4,10 +4,10 @@ title: Build you a COVID-19 tracker the (fun) hard way
 datetime: '2020-04-27'
 slug: 'corona-tracker-the-hard-way'
 tags:
-  - 'PWA'
-  - 'Offline'
-  - 'Gatsby'
-  - 'Jamstack'
+  - 'pwa'
+  - 'offline'
+  - 'gatsby'
+  - 'jamstack'
 description:
   'An adventure in parsing, data massaging, frustration and over-engineering. That just happens to be about COVID-19
   data.'

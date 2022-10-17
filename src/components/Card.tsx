@@ -17,7 +17,7 @@ const styles = {
 export default function Card({ href, post, secHeading = true }: Props) {
   return (
     <li className={styles.cardContainer}>
-      <a href={href} className={styles.titleLink}>
+      <a href={href} className={styles.titleLink} data-swup-preload>
         {secHeading ? (
           <h2 className={styles.titleHeading}>{post.title}</h2>
         ) : (

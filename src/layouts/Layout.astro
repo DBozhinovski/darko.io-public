@@ -63,16 +63,16 @@ const socialImageURL = new URL(
 
     <script is:inline>
       const primaryColorScheme = "none"; // "light" | "dark" | "none"
-
+    
       const darkModeMediaQuery = window.matchMedia(
         "(prefers-color-scheme: dark)"
       ).matches;
-
+    
       // Get theme data from local storage
       const currentTheme = localStorage.getItem("theme");
-
+    
       let theme;
-
+    
       // Set theme to 'theme-dark' if currentTheme is 'dark'
       if (currentTheme) {
         theme = currentTheme === "dark" ? "theme-dark" : "";
@@ -96,12 +96,31 @@ const socialImageURL = new URL(
           theme = darkModeMediaQuery ? "theme-dark" : "";
         }
       }
-
+    
       // Put dark class on html tag to enable dark mode
       document.querySelector("html").className = theme;
     </script>
+
   </head>
   <body>
     <slot />
+    <script>
+      import Swup from 'swup'
+      import SwupHeadPlugin from '@swup/head-plugin'
+      import SwupSlideTheme from '@swup/slide-theme'
+
+      const swup = new Swup({
+        plugins: [new SwupHeadPlugin({
+          persistAssets: true,
+        }), new SwupSlideTheme()],
+      });
+
+      swup.on('contentReplaced', function() {
+        const { pathname } = location;
+        
+        document.querySelectorAll('a').forEach(link => link.classList.remove('active'));
+        document.querySelector(`a[href="${pathname}"]`)?.classList.add('active');
+      });
+    </script>
   </body>
 </html>

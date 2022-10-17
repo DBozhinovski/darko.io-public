@@ -3,9 +3,9 @@ author: Darko Bozhinovski
 title: On meetups, community and principles
 datetime: '2022-06-23'
 tags:
-  - 'Community'
-  - 'Meetups'
-  - 'BeerJS'
+  - 'community'
+  - 'meetups'
+  - 'beerjs'
 description:
   'The one about how I got started with community stuff, meetups and conferences; On complaining vs. taking action.'
 ogImage: '/meetups_post.jpg'

@@ -4,8 +4,8 @@ title: Building an offline chatbot, part 2
 datetime: '2018-08-20'
 slug: 'offline-chatbot-pt2'
 tags:
-  - 'Chatbot'
-  - 'Offline'
+  - 'chatbot'
+  - 'offline'
 description:
   'Building you an offline chatbot for great good. On the how, why and possibilities when it comes to building such
   things. Part 2.'

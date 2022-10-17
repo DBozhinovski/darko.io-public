@@ -2,7 +2,7 @@ import { slugifyStr } from "./slugify";
 import type { MarkdownInstance } from "astro";
 import type { Frontmatter } from "../types";
 
-const getUniqueTags = (posts: MarkdownInstance<Frontmatter>[]) => {
+const getUniqueTags = (posts: any[]) => {
   let tags: string[] = [];
   const filteredPosts = posts.filter(({ frontmatter }) => !frontmatter.draft);
   filteredPosts.forEach((post) => {

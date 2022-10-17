@@ -13,11 +13,20 @@ export interface Props {
 const { activeNav } = Astro.props;
 ---
 
+<!-- <script is:inline>
+  window.addEventListener('locationchange', () => {
+    const { pathname } = location;
+    console.log(pathname);
+  
+    document.querySelector(`a[href="${pathname}"]`)?.classList.add('active');
+  });
+</script> -->
+
 <header>
   <a id="skip-to-content" href="#main-content">Skip to content</a>
   <div class="nav-container">
     <div class="top-nav-wrap">
-      <a href="/" class="logo">
+      <a href="/" class="logo" data-swup-preload>
         {
           LOGO_IMAGE.enable ? (
             <img
@@ -42,25 +51,21 @@ const { activeNav } = Astro.props;
     <nav class="display-none sm:flex">
       <ul>
         <li>
-          <a href="/posts" class={activeNav === "posts" ? "active" : ""}
-            >Posts</a
+          <a href="/posts" data-swup-preload>Posts</a
           >
         </li>
-        <li>
+        <!-- <li>
           <a href="/tags" class={activeNav === "tags" ? "active" : ""}>Tags</a>
-        </li>
+        </li> -->
         <li>
-          <a href="/about" class={activeNav === "about" ? "active" : ""}
-            >About</a
+          <a href="/about" data-swup-preload>About</a
           >
         </li>
       </ul>
       <div class="button-wrapper">
         <LinkButton
           href="/search"
-          className={`focus-outline p-1 ${
-            activeNav === "search" ? "active" : ""
-          }`}
+          className={`focus-outline p-1`}
           ariaLabel="search"
           title="Search"
         >

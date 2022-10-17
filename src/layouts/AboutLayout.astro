@@ -17,12 +17,14 @@ const { frontmatter } = Astro.props;
 
 <Layout title={`${frontmatter.title} | ${SITE.title}`}>
   <Header activeNav="about" />
-  <Breadcrumbs />
-  <main id="main-content">
-    <section id="about" class="mb-28 prose max-w-3xl prose-img:border-0">
-      <h1 class="text-2xl sm:text-3xl tracking-wider">{frontmatter.title}</h1>
-      <slot />
-    </section>
-  </main>
+  <div id="swup">
+    <Breadcrumbs />
+    <main id="main-content">
+      <section id="about" class="mb-28 prose max-w-3xl prose-img:border-0">
+        <h1 class="text-2xl sm:text-3xl tracking-wider">{frontmatter.title}</h1>
+        <slot />
+      </section>
+    </main>
+  </div>
   <Footer />
 </Layout>

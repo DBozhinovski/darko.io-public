@@ -8,6 +8,7 @@ export interface Frontmatter {
   featured: boolean;
   draft: boolean;
   tags: string[];
+  url?: string;
 }
 
 export type SocialsObject = {
@@ -40,3 +41,6 @@ export type SocialMedia =
   | "Skype"
   | "Steam"
   | "Telegram";
+
+declare module 'swup';
+declare module '@swup/preload-plugin';

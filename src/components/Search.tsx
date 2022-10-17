@@ -12,7 +12,7 @@ type SearchItem = {
 };
 
 interface Props {
-  searchList: SearchItem[];
+  searchList: any[];
 }
 
 interface SearchResult {
@@ -26,6 +26,8 @@ export default function SearchBar({ searchList }: Props) {
   const [searchResults, setSearchResults] = useState<SearchResult[] | null>(
     null
   );
+
+  // console.log(searchList);
 
   const handleChange = (e: React.FormEvent<HTMLInputElement>) => {
     setInputVal(e.currentTarget.value);
@@ -81,7 +83,7 @@ export default function SearchBar({ searchList }: Props) {
         block bg-skin-fill w-full rounded
         border border-skin-fill border-opacity-40 
         focus:outline-none focus:border-skin-accent"
-          placeholder="Search for anything..."
+          placeholder="Type here..."
           type="text"
           name="search"
           defaultValue={inputVal}
@@ -107,7 +109,7 @@ export default function SearchBar({ searchList }: Props) {
           searchResults.map(({ item, refIndex }) => (
             <Card
               post={item.frontmatter}
-              href={`/posts/${slugify(item.frontmatter)}`}
+              href={item.frontmatter.url || `/posts/${slugify(item.frontmatter)}`}
               key={`${refIndex}-${slugify(item.frontmatter)}`}
             />
           ))}

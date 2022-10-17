@@ -7,6 +7,8 @@ import Footer from "@components/Footer.astro";
 import Search from "@components/Search";
 import type { Frontmatter } from "src/types";
 
+import external from '../contents/external.json';
+
 // Retrieve all articles
 const posts = await Astro.glob<Frontmatter>("../contents/*.md");
 
@@ -19,12 +21,16 @@ const searchList = posts
     headings: post.getHeadings().map((h) => h.text),
     frontmatter: post.frontmatter,
   }));
+
+const guestPosts = external.map(p => ({ frontmatter: p.frontmatter, title: p.frontmatter.title, description: p.frontmatter.description }));
 ---
 
 <Layout title={`Search | ${SITE.title}`}>
   <Header activeNav="search" />
-  <Main pageTitle="Search" pageDesc="Search any article ...">
-    <Search client:load searchList={searchList} />
-  </Main>
+  <div id="swup">
+    <Main pageTitle="Search" pageDesc="Looking for something specific?">
+      <Search client:load searchList={[...searchList, ...guestPosts]} />
+    </Main>
+  </div>
   <Footer />
 </Layout>
