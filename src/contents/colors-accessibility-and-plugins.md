@@ -161,7 +161,7 @@ Once I published the plugins, I had some constructive discussions about the pack
 
 [Link to the thread](https://twitter.com/d_bozhinovski/status/1585233372972220416)
 
-He was right, of course. However, reasonable comes with a (reduced set on purpose)[https://github.com/matthewhowell/reasonable-colors/issues/3#issuecomment-1107517162]. Luckily https://twitter.com/_isBatak offered a solution, also linked in that thread: https://color-scheme-builder.vercel.app . Color scheme builder is an excellent tool for generating additional color variations from a set of given colors. It supports all of the commonly used distribution functions. A couple of git pushes and an npm publish later, both plugins got a complete set of colors. I used the linear distribution function since it made the most sense for reasonable colors. Now, both plugins come with four extension options:
+He was right, of course. However, reasonable comes with a [reduced set on purpose](https://github.com/matthewhowell/reasonable-colors/issues/3#issuecomment-1107517162). Luckily https://twitter.com/_isBatak offered a solution, also linked in that thread: https://color-scheme-builder.vercel.app . Color scheme builder is an excellent tool for generating additional color variations from a set of given colors. It supports all of the commonly used distribution functions. A couple of git pushes and an npm publish later, both plugins got a complete set of colors. I used the linear distribution function since it made the most sense for reasonable colors. Now, both plugins come with four extension options:
 
 1. `override` - overrides the color on color clash (original reasonable colors only)
 2. `enhance` - enhances the existing palette by namespacing the color (original reasonable colors only)
