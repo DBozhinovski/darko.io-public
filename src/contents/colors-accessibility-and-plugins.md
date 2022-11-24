@@ -1,7 +1,7 @@
 ---
 author: Darko Bozhinovski
 title: Color systems and accessibility - an adventure in plugin authoring for Chakra UI and Tailwind
-datetime: '2022-11-08'
+datetime: '2022-11-24'
 tags:
   - 'color systems'
   - 'plugins'
@@ -48,7 +48,7 @@ Okay, that sounds like a static object, precisely what I was after. In theory, I
 
 The plugin conceptually ended up looking like this:
 
-"`ts
+```ts
 const plugin = require('tailwindcss/plugin');
 
 // Giant color config object
@@ -111,7 +111,7 @@ A brief intermission for the second round of credits: https://twitter.com/Nikolo
 
 What I ended up with looks something like this:
 
-"`ts
+```ts
 import { extendTheme } from "@chakra-ui/react";
 
 const colorConfig = {
