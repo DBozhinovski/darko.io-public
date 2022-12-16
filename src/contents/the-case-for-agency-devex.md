@@ -10,7 +10,6 @@ tags:
 description:
   'On square pegs and round holes - the one about the fine art of DevEx. In agencies. And why it makes sense.'
 ogImage: '/olga-zhushman-7P7K74q67QY-unsplash.jpg'
-# draft: true
 ---
 
 Traditionally[<sup>1</sup>](#footnote-traditionally), when we think of DevEx in any of its shapes, we think of product companies. Alternatively, large enterprise settings with different tech products aimed at developers - think AWS, GCP, etc.
