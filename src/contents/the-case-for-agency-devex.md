@@ -85,11 +85,11 @@ These are fundamentally different than your usual team-building fare. The critic
 
 #### External events
 
-This type of event is public-facing. Whether meetups or conferences, these goals are to make the outer developer community aware of the agency and establish the agency as an authority in some industry segment. The value proposition here vaguely aligns with marketing, PR, and hiring efforts. I want to emphasize _vaguely_ here because if we were to classify these in classical marketing terms, this would easily translate to indirect marketing. However, that's not the point. To quote [Christian Heilmann](#) here:
+This type of event is public-facing. Whether meetups or conferences, these goals are to make the outer developer community aware of the agency and establish the agency as an authority in some industry segment. The value proposition here vaguely aligns with marketing, PR, and hiring efforts. I want to emphasize _vaguely_ here because if we were to classify these in classical marketing terms, this would easily translate to indirect marketing. However, that's not the point. To quote [Christian Heilmann](https://twitter.com/codepo8) here:
 
 > One crucial part to becoming a successful developer advocate is to remove the brand from your thinking.
 
-The same goes for public events - your company logo is there as the event organizer, and that should be the extent of it. [Speaking from personal experience](article-about-conferences-here), public community events should be about community first and indirect marketing second. It's more of an effort to build presence and get mindshare, but it's long-lasting. Long-term efforts with these events come off as more genuine and signal specific values that, based on my experience, attract good talent.
+The same goes for public events - your company logo is there as the event organizer, and that should be the extent of it. [Speaking from personal experience](/on-meetups-community-and-principles), public community events should be about community first and indirect marketing second. It's more of an effort to build presence and get mindshare, but it's long-lasting. Long-term efforts with these events come off as more genuine and signal specific values that, based on my experience, attract good talent.
 
 To expand on the "your company logo" part above:
 
@@ -102,7 +102,7 @@ To expand on the "your company logo" part above:
 
 To summarize, avoid being tone-deaf towards the community. Do what developers like.
 
-On the flip side, be active in and encourage your colleagues to participate in community events that have nothing to do with the agency itself. Indirectly, this also affects your company's perception of talent and culture. It can go a long way in attracting like-minded individuals as potential collaborators. Additionally, sharing your knowledge and findings helps establish the agency as an authority on the topics presented.
+On the flip side, be active in and encourage your colleagues to participate in community events that have nothing to do with the agency itself. Indirectly, this also affects how your company's talent and culture are perceived. It can go a long way in attracting like-minded individuals as potential collaborators. Additionally, sharing your knowledge and findings helps establish the agency as an authority on the topics presented.
 
 ### Doing live streams
 
