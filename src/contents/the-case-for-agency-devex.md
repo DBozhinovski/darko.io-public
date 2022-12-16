@@ -89,7 +89,7 @@ This type of event is public-facing. Whether meetups or conferences, these goals
 
 > One crucial part to becoming a successful developer advocate is to remove the brand from your thinking.
 
-The same goes for public events - your company logo is there as the event organizer, and that should be the extent of it. [Speaking from personal experience](/on-meetups-community-and-principles), public community events should be about community first and indirect marketing second. It's more of an effort to build presence and get mindshare, but it's long-lasting. Long-term efforts with these events come off as more genuine and signal specific values that, based on my experience, attract good talent.
+The same goes for public events - your company logo is there as the event organizer, and that should be the extent of it. [Speaking from personal experience](/posts/on-meetups-community-and-principles), public community events should be about community first and indirect marketing second. It's more of an effort to build presence and get mindshare, but it's long-lasting. Long-term efforts with these events come off as more genuine and signal specific values that, based on my experience, attract good talent.
 
 To expand on the "your company logo" part above:
 
