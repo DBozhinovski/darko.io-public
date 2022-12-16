@@ -17,7 +17,11 @@ export const get = () =>
     title: SITE.title,
     description: SITE.desc,
     site: SITE.website,
-    items: posts.map(({ frontmatter }) => ({
+    items: posts.filter(({ frontmatter }) => {
+      if (!frontmatter.draft) {
+        return true
+      }
+    }).map(({ frontmatter }) => ({
       link: slugify(frontmatter),
       title: frontmatter.title,
       description: frontmatter.description,
