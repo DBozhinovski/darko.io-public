@@ -5,6 +5,7 @@ datetime: '2022-12-16'
 tags:
   - 'swag corner'
   - 'shorts'
+  - 'beerjs'
 description:
   'A trip down memory lane, from the swag corner of my office. part 2.'
 ogImage: '/devcon_badge.webp'
