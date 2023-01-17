@@ -30,7 +30,7 @@ const { title, author, description, ogImage, datetime, tags } = frontmatter;
       <h1 class="post-title">{title}</h1>
       <Datetime datetime={datetime} size="lg" className="my-2" />
       <article id="article" role="article" class="mx-auto max-w-3xl mt-8 prose">
-        <img src={ogImage} class="shadow-md" />
+        <img src={ogImage} class="shadow-md max-h-[700px] w-full object-cover" />
         <Content />
       </article>
   
