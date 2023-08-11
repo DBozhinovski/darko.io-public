@@ -22,11 +22,11 @@ const sortedPosts = getSortedPosts(allPosts);
 
 <Layout>
   <Header />
-  <div id="swup">
+  <div class="bg-background!">
     <main id="main-content">
-      <section id="hero">
-        <h1>Darko's corner</h1>
-        <p>
+      <section id="hero" class="font-open-sans">
+        <h1 class="font-handlee font-black border-b border-accent-two">Darko</h1>
+        <p class="prose prose-lg">
           👋 Hi! I'm Darko. I write software, mostly for the web. I'm also a writer, speaker, community person and Linux nerd.
           I enjoy working with the web platform, warts included and I remember the IE6 days (yes, I’ve been in this industry for 15+ years now 😊).
           <br /><br />
@@ -35,8 +35,6 @@ const sortedPosts = getSortedPosts(allPosts);
           👥 I run a <a href="https://beerjs.mk">meetup</a>, help organize a <a href="https://devcon.dev">conference</a>, have taught at web academies, and mentored colleagues. I’ve also spoken at meetups and conferences.
           <br />
           💻 I’ve led teams, built apps, and created libraries. I’ve freelanced and worked as an individual contributor and in teams. I love FOSS and contribute when I can. My experience spans a large number of industries. You can find my portfolio <a href="https://work.darko.io">here</a>.
-          <br />
-          🌟 And, I’m very much looking to get into DevRel 😊
         </p>
         <div class="social-wrapper">
           <div class="whitespace-nowrap">Darko around the web:</div>
@@ -102,13 +100,13 @@ const sortedPosts = getSortedPosts(allPosts);
     @apply mb-6;
   }
   #hero .rss-icon {
-    @apply h-6 w-6 scale-110 sm:scale-125 mb-2 sm:mb-3 fill-skin-accent;
+    @apply h-6 w-6 scale-110 sm:scale-125 mb-2 sm:mb-3 ;
   }
   #hero p {
     @apply my-2;
   }
   #hero p a {
-    @apply text-skin-accent underline;
+    @apply  underline;
   }
   .social-wrapper {
     @apply flex flex-col sm:flex-row sm:items-center mt-4 mb-6;

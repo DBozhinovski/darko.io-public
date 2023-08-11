@@ -4,7 +4,7 @@ import Layout from "@layouts/Layout.astro";
 import Main from "@layouts/Main.astro";
 import Header from "@components/Header.astro";
 import Footer from "@components/Footer.astro";
-import Search from "@components/Search";
+// import Search from "@components/Search";
 import type { Frontmatter } from "src/types";
 
 import external from '../contents/external.json';
@@ -29,7 +29,7 @@ const guestPosts = external.map(p => ({ frontmatter: p.frontmatter, title: p.fro
   <Header activeNav="search" />
   <div id="swup">
     <Main pageTitle="Search" pageDesc="Looking for something specific?">
-      <Search client:load searchList={[...searchList, ...guestPosts]} />
+      <!-- <Search client:load searchList={[...searchList, ...guestPosts]} /> -->
     </Main>
   </div>
   <Footer />

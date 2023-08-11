@@ -10,18 +10,18 @@ export interface Props {
 const styles = {
   cardContainer: "my-6",
   titleLink:
-    "text-skin-accent font-medium text-lg underline-offset-4 decoration-dashed focus-visible:no-underline focus-visible:underline-offset-0 inline-block",
+    " font-medium text-lg underline-offset-4 decoration-dashed focus-visible:no-underline focus-visible:underline-offset-0 inline-block",
   titleHeading: "font-medium text-lg decoration-dashed hover:underline",
 };
 
 export default function Card({ href, post, secHeading = true }: Props) {
   return (
-    <li className={styles.cardContainer}>
-      <a href={href} className={styles.titleLink} data-swup-preload>
+    <li class={styles.cardContainer}>
+      <a href={href} class={styles.titleLink} data-swup-preload>
         {secHeading ? (
-          <h2 className={styles.titleHeading}>{post.title}</h2>
+          <h2 class={styles.titleHeading}>{post.title}</h2>
         ) : (
-          <h3 className={styles.titleHeading}>{post.title}</h3>
+          <h3 class={styles.titleHeading}>{post.title}</h3>
         )}
       </a>
       <Datetime datetime={post.datetime} />

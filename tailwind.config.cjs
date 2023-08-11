@@ -12,56 +12,22 @@ function withOpacity(variableName) {
 module.exports = {
   content: ["./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}"],
   theme: {
-    // Remove the following screen breakpoint or add other breakpoints
-    // if one breakpoint is not enough for you
-    screens: {
-      sm: "640px",
-    },
-
-    // Uncomment the following extend
-    // if existing Tailwind color palette will be used
-
-    // extend: {
-    textColor: {
-      skin: {
-        base: withOpacity("--color-text-base"),
-        accent: withOpacity("--color-accent"),
-        inverted: withOpacity("--color-fill"),
-      },
-    },
-    backgroundColor: {
-      skin: {
-        fill: withOpacity("--color-fill"),
-        accent: withOpacity("--color-accent"),
-        inverted: withOpacity("--color-text-base"),
-        card: withOpacity("--color-card"),
-        "card-muted": withOpacity("--color-card-muted"),
-      },
-    },
-    outlineColor: {
-      skin: {
-        fill: withOpacity("--color-accent"),
-      },
-    },
-    borderColor: {
-      skin: {
-        line: withOpacity("--color-border"),
-        fill: withOpacity("--color-text-base"),
-        accent: withOpacity("--color-accent"),
-      },
-    },
-    fill: {
-      skin: {
-        base: withOpacity("--color-text-base"),
-        accent: withOpacity("--color-accent"),
-      },
-      transparent: "transparent",
-    },
     fontFamily: {
-      mono: ["IBM Plex Mono", "monospace"],
-      serif: ["EB Garamond", "serif"],
+      'handlee': ['handlee', 'cursive'],
+      'open-sans': ['Open Sans', 'sans-serif']
     },
-    // },
+    extend: {
+      colors: {
+        'background': '#FAF3E0',
+        'primary': '#2E2E2E',
+        'secondary': '#755C42',
+        'accent-one': '#967340',
+        'accent-two': '#4C6A50',
+        'highlight-select': '#3B4F77',
+        'error-attention': '#9A534D',
+        'root': '#32312d'
+      }
+    }
   },
   plugins: [require("@tailwindcss/typography")],
 };
