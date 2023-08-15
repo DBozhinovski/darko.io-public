@@ -1,66 +1,51 @@
 ---
-import { SITE } from "src/config";
-import Layout from "@layouts/Layout.astro";
-import Main from "@layouts/Main.astro";
-import Header from "@components/Header.astro";
-import Footer from "@components/Footer.astro";
-import Card from "@components/Card";
-import getUniqueTags from "@utils/getUniqueTags";
-import getPostsByTag from "@utils/getPostsByTag";
-import type { MarkdownInstance } from "astro";
-import type { Frontmatter } from "src/types";
-import slugify from "@utils/slugify";
-
-import external from '../../contents/external.json';
-
-export interface Props {
-  post: MarkdownInstance<Frontmatter>;
-  tag: string;
-}
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import BlogPost from "../../components/BlogPost.astro";
+import { getCollection } from "astro:content";
 
 export async function getStaticPaths() {
-  const posts: MarkdownInstance<Frontmatter>[] = await Astro.glob(
-    "../../contents/*.md"
-  );
+  const allPosts = await getCollection("posts");
+  const uniqueTags = [
+    ...new Set(allPosts.map((post) => post.data.tags).flat()),
+  ];
 
-  const tags = getUniqueTags([...posts, ...external]);
-
-  return tags.map((tag) => {
+  return uniqueTags.map((tag) => {
+    const filteredPosts = allPosts.filter((post) =>
+      post.data.tags.includes(tag)
+    );
     return {
-      params: {
-        tag,
-      },
-      props: {
-        tag,
-      },
+      params: { tag },
+      props: { posts: filteredPosts },
     };
   });
 }
 
-const { tag } = Astro.props;
-
-const posts: MarkdownInstance<Frontmatter>[] = await Astro.glob(
-  "../../contents/*.md"
-);
-
-const tagPosts = getPostsByTag([...posts, ...external], tag);
+const { tag } = Astro.params;
+const { posts } = Astro.props;
 ---
 
-<Layout title={`Tag:${tag} | ${SITE.title}`}>
-  <Header activeNav="tags" />
-  <div id="swup">
-    <Main
-      pageTitle={`Tag:${tag}`}
-      pageDesc={`All the articles with the tag "${tag}".`}
-    >
-      <ul>
+<BaseLayout pageTitle={tag}>
+  <section aria-labelledby="your-label" id="your-id">
+    <div class="max-w-7xl mx-auto px-8 py-12 lg:px-24">
+      <div class="max-w-xl">
+        <h1 class="text-black text-3xl lg:text-5xl font-bold">
+          Posts tagged with {tag}
+        </h1>
+      </div>
+
+      <div class="mt-12">
         {
-          tagPosts.map(({ frontmatter }) => (
-            <Card href={frontmatter.url || `/posts/${slugify(frontmatter)}`} post={frontmatter} />
+          posts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()).map((post) => (
+            <ul role="list">
+              <BlogPost
+                url={"/posts/" + post.slug}
+                title={post.data.title}
+                description={post.data.description}
+              />
+            </ul>
           ))
         }
-      </ul>
-    </Main>
-  </div>
-  <Footer />
-</Layout>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

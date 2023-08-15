@@ -1,0 +1,31 @@
+---
+const { title, url, description, pubDate, author, image } = Astro.props;
+---
+
+<div class="max-w-7xl mx-auto px-8 lg:px-24 py-12">
+  <div
+    class="grid grid-cols-1 lg:grid-cols-2 items-center border-y lg:gap-x-24 max-w-7xl mx-auto">
+    <div
+      class="mx-auto max-w-md text-center lg:mx-0 lg:flex-auto lg:text-left py-12">
+      <h2
+        class="text-3xl font-semibold tracking-tight text-black sm:text-4xl lg:text-5xl">
+        {title}
+      </h2>
+      <p class="mt-6 text-lg leading-8 text-neutral-500">
+        {description}
+      </p>
+      <div
+        class="mt-10 flex items-center justify-center gap-x-6 lg:justify-start">
+        <a
+          href={url}
+          title={title}
+          class="bg-inherit border-2 border-black px-3.5 lg:px-16 py-2.5 lg:py-3 text-xl lg:text-2xl text-black duration-200 hover:bg-black focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white hover:text-white w-full lg:w-auto inline-flex items-center"
+          >Read More</a
+        >
+      </div>
+    </div>
+    <div class="hidden lg:block">
+      <img class="object-cover object-center h-full" src={image} alt={title} />
+    </div>
+  </div>
+</div>

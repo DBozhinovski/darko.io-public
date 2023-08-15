@@ -1,0 +1,18 @@
+---
+const { title, description, url } = Astro.props;
+---
+
+<a href={url} title={title}>
+  <li
+    class="grid grid-cols-1 lg:grid-cols-4 py-3 gap-6"
+    aria-label="Getting started on page 1">
+    <span
+      class="text-lg font-semibold leading-6 text-black lg:text-xl"
+      aria-hidden="true">
+      {title}</span
+    ><span class="text-neutral-500 lg:col-span-3" aria-hidden="true">
+      {description}
+    </span>
+  </li>
+
+</a>

@@ -1,0 +1,50 @@
+---
+import { faq } from "../../data/faq.json";
+---
+
+<section aria-labelledby="your-label" id="your-id">
+  <div class="max-w-7xl mx-auto px-8 py-12 lg:px-24">
+    <h1 class="text-black text-3xl lg:text-9xl font-bold">FAQ</h1>
+  </div>
+</section>
+<section aria-labelledby="your-label" id="your-id">
+  <div class="max-w-7xl mx-auto px-8 py-12 lg:px-24">
+    <div
+      class="mx-auto grid grid-cols-1 gap-x-8 gap-y-12 sm:gap-y-16 lg:grid-cols-3 lg:divide-x">
+      <div class="divide-y [&>*:nth-child(1)]:pt-0">
+        {
+          faq.slice(0, 4).map((template) => (
+            <>
+              <article class="mx-auto w-full py-6 lg:py-12">
+                <h4 class="text-2xl font-bold tracking-tight text-black lg:text-3xl">
+                  {template.question}
+                </h4>
+                <p class="mt-4 text-neutral-500">{template.answer}</p>
+              </article>
+            </>
+          ))
+        }
+      </div>
+      <div class="lg:col-span-2 lg:pl-12">
+        <ul class="list-none divide-y [&>*:nth-child(1)]:pt-0" role="list">
+          {
+            faq.slice(0, 10).map((template) => (
+              <>
+                <li class="py-6 lg:py-12">
+                  <details class="cursor-pointer ourline-none">
+                    <summary class="flex text-2xl font-bold tracking-tight text-black lg:text-3xl">
+                      <h4 class="text-xl font-normal tracking-tight text-black ">
+                        {template.question}
+                      </h4>
+                    </summary>
+                    <p class="mt-4 text-neutral-500">{template.answer}</p>
+                  </details>
+                </li>
+              </>
+            ))
+          }
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>

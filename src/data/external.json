@@ -1,0 +1,46 @@
+[
+  {
+    "frontmatter": {
+      "author": "Darko Bozhinovski",
+      "title": "Guest post: Skip the app store with your own progressive web app (Part 1)",
+      "description": "On offline-capable PWAs with a twist - a personal assistant wannabe chatbot.",
+      "pubDate": "2022-03-31",
+      "tags": ["nlp", "pwa", "chatbot", "offline", "guest"],
+      "ogImage": "/volodymyr-hryshchenko-V5vqWC9gyEU-unsplash.jpg",
+      "url": "https://www.gun.io/blog/building-a-personal-assistant-progressive-web-app"
+    }
+  },
+  {
+    "frontmatter": {
+      "author": "Darko Bozhinovski",
+      "title": "Guest post: Building a Personal Assistant PWA: (Part 2)",
+      "description": "On offline-capable PWAs with a twist - a personal assistant wannabe chatbot.",
+      "pubDate": "2022-04-14",
+      "tags": ["nlp", "pwa", "chatbot", "offline", "guest"],
+      "ogImage": "/volodymyr-hryshchenko-V5vqWC9gyEU-unsplash.jpg",
+      "url": "https://www.gun.io/blog/progressive-web-app-building-the-chatbot"
+    }
+  },
+  {
+    "frontmatter": {
+      "author": "Darko Bozhinovski",
+      "title": "Guest post: Building a Personal Assistant PWA: (Part 3)",
+      "description": "On offline-capable PWAs with a twist - a personal assistant wannabe chatbot.",
+      "pubDate": "2022-04-28",
+      "tags": ["nlp", "pwa", "chatbot", "offline", "guest"],
+      "ogImage": "/volodymyr-hryshchenko-V5vqWC9gyEU-unsplash.jpg",
+      "url": "https://www.gun.io/blog/progressive-web-app-finishing-touches"
+    }
+  },
+  {
+    "frontmatter": {
+      "author": "Darko Bozhinovski",
+      "title": "Guest post: REST vs GraphQL",
+      "description": "POV: a stubborn front-end hardliner",
+      "pubDate": "2022-02-17",
+      "tags": ["graphql", "rest", "api design", "guest"],
+      "ogImage": "/jason-dent-QSIq9ncQkzY-unsplash.jpg",
+      "url": "https://www.gun.io/blog/rest-vs-graphql"
+    }
+  }
+]

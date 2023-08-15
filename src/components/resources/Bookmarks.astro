@@ -1,0 +1,197 @@
+---
+import { devResources } from "../../data/devResources.json";
+import { designResources } from "../../data/designResources.json";
+---
+
+<section aria-labelledby="your-label" id="your-id">
+  <div class="max-w-7xl mx-auto px-8 py-12 lg:px-24">
+    <div class="max-w-xl">
+      <h1 class="text-black text-3xl lg:text-5xl font-bold">Bookmarks</h1>
+      <p class="text-neutral-500 mt-12">
+        These bookmarks are the ones that I revisit frequently because they
+        provide exceptional value and are extremely useful to me.
+      </p>
+    </div>
+    <div class="mx-auto py-12">
+      <div>
+        <div
+          x-data="{
+              selectedId: null,
+              init() {
+                  // Set the first available tab on the page on page load.
+                  this.$nextTick(() => this.select(this.$id('tab', 1)))
+              },
+              select(id) {
+                  this.selectedId = id
+              },
+              isSelected(id) {
+                  return this.selectedId === id
+              },
+              whichChild(el, parent) {
+                  return Array.from(parent.children).indexOf(el) + 1
+              }
+          }"
+          x-id="['tab']"
+          class="mx-auto relative">
+          <!-- Tab List -->
+          <ul
+            x-ref="tablist"
+            @keydown.right.prevent.stop="$focus.wrap().next()"
+            @keydown.home.prevent.stop="$focus.first()"
+            @keydown.page-up.prevent.stop="$focus.first()"
+            @keydown.left.prevent.stop="$focus.wrap().prev()"
+            @keydown.end.prevent.stop="$focus.last()"
+            @keydown.page-down.prevent.stop="$focus.last()"
+            role="tablist"
+            class="grid grid-cols-2 items-stretch w-full">
+            <!-- Tab -->
+            <li>
+              <button
+                :id="$id('tab', whichChild($el.parentElement, $refs.tablist))"
+                @click="select($el.id)"
+                @mousedown.prevent
+                @focus="select($el.id)"
+                type="button"
+                :tabindex="isSelected($el.id) ? 0 : -1"
+                :aria-selected="isSelected($el.id)"
+                :class="isSelected($el.id) ? ' border-b border-black   ' : 'bg-transparent'"
+                class="inline-flex items-center gap-2 p-4 lg:p-8 text-sm w-full"
+                role="tab">
+                <span class="p-2 rounded-xl text-black">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="icon icon-tabler icon-tabler-terminal-2"
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    stroke-width="2"
+                    stroke="currentColor"
+                    fill="none"
+                    stroke-linecap="round"
+                    stroke-linejoin="round">
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                    <path d="M8 9l3 3l-3 3"></path>
+                    <path d="M13 15l3 0"></path>
+                    <path
+                      d="M3 4m0 2a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2z"
+                    ></path>
+                  </svg></span
+                >
+                <span class="hidden sm:block text-black">Web Development</span
+                ></button
+              >
+            </li>
+            <li>
+              <button
+                :id="$id('tab', whichChild($el.parentElement, $refs.tablist))"
+                @click="select($el.id)"
+                @mousedown.prevent
+                @focus="select($el.id)"
+                type="button"
+                :tabindex="isSelected($el.id) ? 0 : -1"
+                :aria-selected="isSelected($el.id)"
+                :class="isSelected($el.id) ? ' border-b border-black   ' : 'bg-transparent'"
+                class="inline-flex items-center gap-2 p-4 lg:p-8 text-sm w-full"
+                role="tab">
+                <span class="p-2 rounded-xl text-black"
+                  ><svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="icon icon-tabler icon-tabler-frame"
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    stroke-width="2"
+                    stroke="currentColor"
+                    fill="none"
+                    stroke-linecap="round"
+                    stroke-linejoin="round">
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                    <path d="M4 7l16 0"></path>
+                    <path d="M4 17l16 0"></path>
+                    <path d="M7 4l0 16"></path>
+                    <path d="M17 4l0 16"></path>
+                  </svg></span
+                >
+                <span class="hidden sm:block text-black"
+                  >Web Design and UI/UX</span
+                ></button
+              >
+            </li>
+          </ul>
+          <!-- Panels -->
+          <div role="tabpanels">
+            <!-- Panel -->
+            <section
+              x-show="isSelected($id('tab', whichChild($el, $el.parentElement)))"
+              :aria-labelledby="$id('tab', whichChild($el, $el.parentElement))"
+              role="tabpanel">
+              <ul role="list" class="divide-y mx-auto">
+                {
+                  devResources.map((template) => (
+                    <>
+                      <li class="p-4 hover:bg-neutral-50  group  duration-200 lg:p-8">
+                        <a href={template.url} title={template.title}>
+                          <div class="sm:inline-flex ">
+                            <div class="mb-4 flex-shrink-0 sm:mb-0 sm:mr-4 ">
+                              <img
+                                src={template.img}
+                                class="h-8 w-8 rounded-full"
+                                alt={template.title}
+                              />
+                            </div>
+                            <div class="grid grid-cols-1 lg:grid-cols-4">
+                              <h4 class="text-lg font-semibold leading-6 text-black lg:text-xl">
+                                {template.title}
+                              </h4>
+                              <p class="mt-4 text-neutral-500 group-hover:text-black text-sm lg:text-base  lg:col-span-3 lg:mt-0">
+                                {template.description}
+                              </p>
+                            </div>
+                          </div>
+                        </a>
+                      </li>
+                    </>
+                  ))
+                }
+              </ul>
+            </section>
+            <section
+              x-show="isSelected($id('tab', whichChild($el, $el.parentElement)))"
+              :aria-labelledby="$id('tab', whichChild($el, $el.parentElement))"
+              role="tabpanel">
+              <ul role="list" class="divide-y mx-auto">
+                {
+                  designResources.map((template) => (
+                    <>
+                      <li class="p-4 hover:bg-neutral-50  group  duration-200 lg:p-8">
+                        <a href={template.url} title={template.title}>
+                          <div class="sm:inline-flex ">
+                            <div class="mb-4 flex-shrink-0 sm:mb-0 sm:mr-4 ">
+                              <img
+                                src={template.img}
+                                class="h-8 w-8 rounded-full"
+                                alt={template.title}
+                              />
+                            </div>
+                            <div class="grid grid-cols-1 lg:grid-cols-4">
+                              <h4 class="text-lg font-semibold leading-6 text-black lg:text-xl">
+                                {template.title}
+                              </h4>
+                              <p class="mt-4 text-neutral-500 group-hover:text-black text-sm lg:text-base  lg:col-span-3 lg:mt-0">
+                                {template.description}
+                              </p>
+                            </div>
+                          </div>
+                        </a>
+                      </li>
+                    </>
+                  ))
+                }
+              </ul>
+            </section>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

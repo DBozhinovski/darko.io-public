@@ -1,0 +1,22 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+/* CSS */
+:root { font-family: 'Poppins', sans-serif; }
+@supports (font-variation-settings: normal) {
+  :root { font-family: 'Poppins', sans-serif; }
+}
+:root {
+  --astro-code-color-text: #000000;
+  --astro-code-color-background: #fdfdfe;
+  --astro-code-token-constant: #00000080;
+  --astro-code-token-string: #000000;
+  --astro-code-token-comment: #00000080;
+  --astro-code-token-keyword: #4ab294;
+  --astro-code-token-parameter: #000000;
+  --astro-code-token-function: #b81be6;
+  --astro-code-token-string-expression: #1685b3;
+  --astro-code-token-punctuation: #000000;
+  --astro-code-token-link: #000000;
+}
+/* Transition on the summary tag by faking the bottom maring*/

@@ -1,28 +1,39 @@
 ---
-import { SITE } from "src/config";
-import Header from "@components/Header.astro";
-import Footer from "@components/Footer.astro";
-import Layout from "@layouts/Layout.astro";
-import Main from "@layouts/Main.astro";
-import Tag from "@components/Tag.astro";
-import getUniqueTags from "@utils/getUniqueTags";
-import type { Frontmatter } from "src/types";
-
-import external from '../../contents/external.json';
-
-const posts = await Astro.glob<Frontmatter>("../../contents/*.md");
-
-let tags = getUniqueTags([...posts, ...external]);
+import { getCollection } from "astro:content";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+const allPosts = await getCollection("posts");
+const tags = [...new Set(allPosts.map((post) => post.data.tags).flat())];
+const pageTitle = "Tag Index";
 ---
 
-<Layout title={`Tags | ${SITE.title}`}>
-  <Header activeNav="tags" />
-  <div id="swup">
-    <Main pageTitle="Tags" pageDesc="All the tags used in posts.">
-      <ul>
-        {tags.map((tag) => <Tag name={tag} size="lg" />)}
+<BaseLayout pageTitle={pageTitle}>
+  <section aria-labelledby="your-label" id="your-id">
+    <div class="max-w-7xl mx-auto px-8 py-12 lg:px-24">
+      <div class="max-w-xl">
+        <h1 class="text-black text-3xl lg:text-5xl font-bold">All blog tags</h1>
+        <div class="mt-10 flex items-center justify-start">
+          <a
+            href="/blog"
+            title="#"
+            class="bg-inherit border-2 border-black px-3.5 lg:px-16 py-2.5 lg:py-3 text-xl lg:text-2xl text-black duration-200 hover:bg-black focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white hover:text-white w-full lg:w-auto inline-flex items-center"
+            >See all posts</a
+          >
+        </div>
+      </div>
+      <ul role="list" class="mt-12 divide-y divide-slate-300/30">
+        {
+          tags.map((tag) => (
+            <li class=" py-3 lg:py-6 w-full">
+              <a
+                class=" inline-flex items-center justify-between w-full "
+                href={`/tags/${tag}`}>
+                <div class="text-black uppercase italic"> {tag}</div>
+                <div class="ml-auto">&rarr;</div>
+              </a>
+            </li>
+          ))
+        }
       </ul>
-    </Main>
-  </div>
-  <Footer />
-</Layout>
+    </div>
+  </section>
+</BaseLayout>

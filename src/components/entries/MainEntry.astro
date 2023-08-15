@@ -1,0 +1,26 @@
+---
+const { title, url, description, pubDate, author, image } = Astro.props;
+---
+
+
+<a href={url} title={title} >
+  <article class="mx-auto w-full lg:mx-0 lg:max-w-lg">
+    <img
+      class="aspect-[16/9] w-full object-cover sm:aspect-[2/1] lg:aspect-[3/2]"
+      src={image}
+      alt={title}
+    />
+    <time
+      datetime={pubDate}
+      class="block text-sm leading-6 text-neutral-500 mt-3">{pubDate}</time
+    >
+    <h2
+      id="featured-post"
+      class="mt-4 text-3xl font-bold tracking-tight text-black normal-case">
+      {title}
+    </h2>
+    <p class="mt-4 text-neutral-500 line-clamp-2">
+      {description}
+    </p>
+  </article>
+</a>

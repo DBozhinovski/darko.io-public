@@ -1,0 +1,109 @@
+---
+import BaseLayout from "./BaseLayout.astro";
+const { frontmatter } = Astro.props;
+import CtaTwo from "../components/cta/CtaTwo.astro";
+import { AstroSeo } from "@astrolib/seo";
+import { format } from 'date-fns';
+---
+
+<AstroSeo
+  title={frontmatter.title}
+  description={frontmatter.description}
+  canonical="https://www.lexingtonthemes.com"
+  openGraph={{
+    url: "https://www.lexingtonthemes.com",
+    title: "Title}",
+    description: "{frontmatter.description}",
+    images: [
+      {
+        url: "https://www.lexingtonthemes.com/opengraph/social-og.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Social open graph",
+        type: "image/jpeg",
+      },
+      {
+        url: "https://www.lexingtonthemes.com/opengraph/twitter-og.jpg",
+        width: 4096,
+        height: 4096,
+        alt: "Twitter open graph",
+        type: "image/jpeg",
+      },
+      { url: "https://www.lexingtonthemes.com/opengraph/social-og.jpg" },
+      { url: "https://www.lexingtonthemes.com/opengraph/twitter-og.jpg" },
+    ],
+    site_name: "YourSitesName",
+  }}
+  twitter={{
+    handle: "@TwitterHandle",
+    site: "@site",
+    cardType: "summary_large_image",
+  }}
+/>
+<BaseLayout>
+  <section aria-labelledby="your-label" id="your-id">
+    <div class="max-w-7xl mx-auto px-8 py-12 lg:px-24">
+      <div>
+        <h1 class="text-black text-3xl lg:text-6xl text-center">
+          {frontmatter.title}
+        </h1>
+      </div>
+      <div class="max-w-3xl mx-auto mt-24 text-center">
+        <p class="text-neutral-500 font-mono text-2xl mx-auto">
+          <em>{frontmatter.description}</em>
+        </p>
+        <div>
+          <ol
+            role="list"
+            class="mt-8 divide-y divide-neutral-300/30 text-base tracking-tight">
+            <li
+              class="flex justify-between flex-col md:flex-row py-3"
+              aria-label="Getting started on page 1">
+              <span class="font-light text-black" aria-hidden="true">Date</span
+              ><span class="font-mono text-neutral-500" aria-hidden="true"
+                >{format(frontmatter.pubDate, 'yyyy-MM-dd')}</span
+              >
+            </li><li
+              class="flex justify-between flex-col md:flex-row py-3"
+              aria-label="Intro to Figma on page 15">
+              <span class="font-light text-black" aria-hidden="true"
+                >Author</span
+              ><span class="font-mono text-neutral-500" aria-hidden="true"
+                >{frontmatter.author}</span
+              >
+            </li>
+            <li
+              class="flex justify-between flex-col md:flex-row py-3"
+              aria-label="Setting up your first artboard on page 20">
+              <span class="font-light text-black" aria-hidden="true"
+                >Category</span
+              ><span
+                class="font-mono text-neutral-500 divide-x divide-neutral-700 gap-3"
+                aria-hidden="true"
+                >{
+                  frontmatter.tags.map((tag) => (
+                    <>
+                      <a class="pl-2" href={`/tags/${tag}`}>
+                        {tag}
+                      </a>
+                    </>
+                  ))
+                }</span
+              >
+            </li>
+          </ol>
+        </div>
+      </div>
+      <img src={frontmatter.ogImage} alt="image" class="mt-8 w-full" />
+    </div>
+  </section>
+  <section aria-labelledby="your-label" id="your-id">
+    <div class="max-w-7xl mx-auto px-8 pb-16 pt-2 lg:px-24">
+      <div
+        class="mx-auto hover:prose-a:text-black font-light lg:prose-xl prose prose-a:text-blue-500 prose-blockquote:border-l-black prose-blockquote:text-black prose-bloquote:text-5xl prose-headings:font-medium prose-headings:text-black prose-li:marker:text-black text-neutral-600 py-10 prose-pre:border prose-img:w-full">
+        <slot />
+      </div>
+    </div>
+  </section>
+  <CtaTwo />
+</BaseLayout>

@@ -1,0 +1,19 @@
+---
+const { title, url, description, pubDate, author, ogImage } = Astro.props;
+---
+
+<article class="lg:p-6">
+  <a href={url} title={title}>
+    <div>
+      <div class="group relative max-w-xl">
+        <time
+          datetime={pubDate}
+          class="block text-sm leading-6 text-neutral-400">{pubDate}</time
+        >
+        <h3 class="mt-3 text-lg font-normal leading-6 text-black line-clamp-3">
+          {description}
+        </h3>
+      </div>
+    </div>
+  </a>
+</article>

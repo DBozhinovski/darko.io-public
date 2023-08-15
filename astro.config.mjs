@@ -1,30 +1,22 @@
-import { defineConfig } from "astro/config";
+import { defineConfig } from 'astro/config';
 import tailwind from "@astrojs/tailwind";
-import remarkToc from "remark-toc";
-import remarkCollapse from "remark-collapse";
 import sitemap from "@astrojs/sitemap";
-
-import solidJs from "@astrojs/solid-js";
-
-// https://astro.build/config
+import mdx from "@astrojs/mdx";
 export default defineConfig({
-  site: "https://darko.io/",
-  server: {
-    host: "0.0.0.0"
+  experimental: {
+    viewTransitions: true,
   },
-  integrations: [tailwind({
-    config: {
-      applyBaseStyles: false
-    }
-  }), solidJs(), sitemap()],
   markdown: {
-    remarkPlugins: [remarkToc, [remarkCollapse, {
-      test: "Table of contents"
-    }]],
+    drafts: true,
     shikiConfig: {
-      theme: "one-dark-pro",
-      wrap: true
-    },
-    extendDefaultPlugins: true
-  }
+      theme: "css-variables"
+    }
+  },
+  shikiConfig: {
+    wrap: true,
+    skipInline: false,
+    drafts: true
+  },
+  site: 'https://lexingtonthemes.com',
+  integrations: [tailwind(), sitemap(), mdx()]
 });

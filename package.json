@@ -1,7 +1,8 @@
 {
-  "name": "darko.io",
-  "version": "1.0.1",
-  "private": false,
+  "name": "@lexington/blog",
+  "type": "module",
+  "version": "0.0.1",
+  "private": true,
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
@@ -10,25 +11,25 @@
     "astro": "astro"
   },
   "dependencies": {
+    "@astrojs/mdx": "^0.19.7",
+    "@astrojs/preact": "^2.2.2",
+    "@astrojs/prism": "^2.1.2",
     "@astrojs/rss": "^2.4.4",
-    "@astrojs/solid-js": "^2.2.0",
-    "@dpschool/squiggles": "^0.8.0",
-    "@types/slug": "^5.0.3",
-    "astro": "^2.10.5",
-    "astro-google-fonts-optimizer": "^0.2.2",
-    "doodle.css": "^0.0.2",
-    "fuse.js": "^6.6.2",
-    "remark-collapse": "^0.1.2",
-    "remark-toc": "^8.0.1",
-    "roughjs": "4.4",
+    "@astrojs/sitemap": "^2.0.2",
+    "@astrojs/tailwind": "^4.0.0",
+    "astro": "^2.10.8",
+    "date-fns": "^2.30.0",
+    "mdast-util-to-string": "^4.0.0",
+    "nightwind": "^1.1.13",
+    "preact": "^10.17.0",
+    "reading-time": "^1.5.0",
     "slug": "^8.2.3",
-    "solid-js": "^1.7.10",
-    "tailwindcss": "^3.3.3",
-    "wired-elements": "^3.0.0-rc.6"
+    "tailwindcss": "^3.3.3"
   },
   "devDependencies": {
-    "@astrojs/sitemap": "^2.0.1",
-    "@astrojs/tailwind": "^4.0.0",
+    "@astrolib/seo": "^0.6.0",
+    "@tailwindcss/aspect-ratio": "^0.4.2",
+    "@tailwindcss/forms": "^0.5.4",
     "@tailwindcss/typography": "^0.5.9"
   }
 }

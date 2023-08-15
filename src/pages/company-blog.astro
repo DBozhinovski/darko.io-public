@@ -1,0 +1,166 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+import HeaderOne from "../components/headers/HeaderOne.astro";
+import EntriesOne from "../components/entries/EntriesOne.astro";
+import EntriesTwo from "../components/entries/EntriesTwo.astro";
+import EntriesThree from "../components/entries/EntriesThree.astro";
+
+import EntryFour from "../components/entries/EntryFour.astro";
+import { getCollection } from "astro:content";
+const allPosts = await getCollection("posts");
+import { AstroSeo } from "@astrolib/seo";
+---
+
+<AstroSeo
+  title="Blog landing one"
+  description="Your site description goes here"
+  canonical="https://www.lexingtonthemes.com"
+  openGraph={{
+    url: "https://www.lexingtonthemes.com",
+    title: "Open Graph Title",
+    description: "Open Graph Description",
+    images: [
+      {
+        url: "https://www.lexingtonthemes.com/opengraph/social-og.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Social open graph",
+        type: "image/jpeg",
+      },
+      {
+        url: "https://www.lexingtonthemes.com/opengraph/twitter-og.jpg",
+        width: 4096,
+        height: 4096,
+        alt: "Twitter open graph",
+        type: "image/jpeg",
+      },
+      { url: "https://www.lexingtonthemes.com/opengraph/social-og.jpg" },
+      { url: "https://www.lexingtonthemes.com/opengraph/twitter-og.jpg" },
+    ],
+    site_name: "YourSitesName",
+  }}
+  twitter={{
+    handle: "@TwitterHandle",
+    site: "@site",
+    cardType: "summary_large_image",
+  }}
+/>
+<BaseLayout>
+  <HeaderOne />
+  <section aria-labelledby="your-label" id="your-id">
+    <div class="max-w-7xl mx-auto px-8 lg:px-24 py-12">
+      <h3
+        class="text-base uppercase font-semibold leading-6 text-black lg:text-2xl">
+        Tutorials
+      </h3>
+
+      <div
+        class="mx-auto grid grid-cols-1 sm:grid-cols-2 gap-x-3 md:gap-x-0 gap-y-12 sm:gap-y-16 mt-12 lg:grid-cols-4 lg:divide-x md:-mx-6">
+        {
+          allPosts
+          .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+            .slice(2, 6)
+            .map((post) => (
+              <EntriesTwo
+                url={"/posts/" + post.slug}
+                title={post.data.title}
+                description={post.data.description}
+                alt={post.data.title}
+                pubDate={post.data.pubDate.toString().slice(0, 10)}
+                author={post.data.author}
+                image={post.data.ogImage}
+              />
+            ))
+        }
+      </div>
+    </div>
+  </section>
+  <section aria-labelledby="your-label" id="your-id">
+    {
+      allPosts
+      .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+        .slice(5, 6)
+        .map((post) => (
+          <EntryFour
+            url={"/posts/" + post.slug}
+            title={post.data.title}
+            description={post.data.description}
+            alt={post.data.title}
+            pubDate={post.data.pubDate.toString().slice(0, 10)}
+            author={post.data.author}
+            image={post.data.ogImage}
+          />
+        ))
+    }
+  </section>
+  <section aria-labelledby="your-label" id="your-id">
+    <div class="max-w-7xl mx-auto px-8 lg:px-24 py-12">
+      <h3
+        class="text-base uppercase font-semibold leading-6 text-black lg:text-2xl">
+        Editors Choice
+      </h3>
+
+      <div
+        class="mx-auto grid grid-cols-1 gap-y-12 gap-x-3 lg:px-0 lg:gap-x-0 sm:gap-y-16 sm:grid-cols-2 mt-12 lg:grid-cols-4 lg:divide-x lg:-mx-6">
+        {
+          allPosts
+          .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+            .slice(1, 5)
+            .map((post) => (
+              <EntriesThree
+                url={"/posts/" + post.slug}
+                title={post.data.title}
+                description={post.data.description}
+                alt={post.data.title}
+                pubDate={post.data.pubDate.toString().slice(0, 10)}
+                author={post.data.author}
+                image={post.data.ogImage}
+              />
+            ))
+        }
+      </div>
+    </div>
+  </section>
+  <section aria-labelledby="your-label" id="your-id">
+    {
+      allPosts
+      .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+        .slice(2, 3)
+        .map((post) => (
+          <EntryFour
+            url={"/posts/" + post.slug}
+            title={post.data.title}
+            description={post.data.description}
+            alt={post.data.title}
+            pubDate={post.data.pubDate.toString().slice(0, 10)}
+            author={post.data.author}
+            image={post.data.ogImage}
+          />
+        ))
+    }
+  </section>
+  <section aria-labelledby="your-label" id="your-id">
+    <div class="max-w-7xl mx-auto px-8 lg:px-24 py-12">
+      <ul
+        class="grid grid-cols-1 lg:grid-cols-3 sm:grid-cols-2 gap-x-3 gap-y-24 lg:gap-x-12">
+        {
+          allPosts
+          .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+            .slice()
+            .map((post) => (
+              <EntriesOne
+                url={"/posts/" + post.slug}
+                title={post.data.title}
+                description={post.data.description}
+                alt={post.data.title}
+                pubDate={post.data.pubDate.toString().slice(0, 10)}
+                author={post.data.author}
+                image={post.data.ogImage}
+              />
+            ))
+        }
+      </ul>
+    </div>
+  </section>
+</BaseLayout>

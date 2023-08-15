@@ -1,0 +1,49 @@
+---
+import MainEntry from "../entries/MainEntry.astro";
+import MainEntryGroup from "../entries/MainEntryGroup.astro";
+import { getCollection } from "astro:content";
+const allPosts = await getCollection("posts");
+---
+
+<section aria-labelledby="your-label" id="your-id">
+  <div class="max-w-7xl mx-auto px-8 py-12 lg:px-24">
+    <div
+      class="mx-auto grid grid-cols-1 gap-x-8 gap-y-12 sm:gap-y-16 lg:grid-cols-2">
+      {
+        allPosts
+          .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+          .slice(0, 1)
+          .map((post) => (
+            <MainEntry
+              url={"/posts/" + post.slug}
+              title={post.data.title}
+              description={post.data.description}
+              alt={post.data.title}
+              pubDate={post.data.pubDate.toString().slice(0, 10)}
+              author={post.data.author}
+              image={post.data.ogImage}
+            />
+          ))
+      }
+      <div
+        class="mx-auto w-full grid grid-cols-1 sm:grid-cols-3 gap-6 lg:gap-0 lg:grid-cols-1 sm:divide-transparent lg:divide divide-y divide-neutral-700 pt-12 sm:pt-16 lg:mx-0 lg:max-w-none lg:pt-0 [&>*:nth-child(1)]:pt-0">
+        {
+          allPosts
+          .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+            .slice(1, 4)
+            .map((post) => (
+              <MainEntryGroup
+                url={"/posts/" + post.slug}
+                title={post.data.title}
+                description={post.data.description}
+                alt={post.data.title}
+                pubDate={post.data.pubDate.toString().slice(0, 10)}
+                author={post.data.author}
+                image={post.data.ogImage}
+              />
+            ))
+        }
+      </div>
+    </div>
+  </div>
+</section>
