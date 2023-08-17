@@ -1,10 +1,14 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-import EntriesOne from "../components/entries/EntriesOne.astro";
-import HighlightedNews from "../components/entries/HighlightedNews.astro";
+// import EntriesOne from "../components/entries/EntriesOne.astro";
+// import HighlightedNews from "../components/entries/HighlightedNews.astro";
 import { getCollection } from "astro:content";
-const allPosts = await getCollection("posts")
+const allPosts = await getCollection("posts");
 import { AstroSeo } from "@astrolib/seo";
+import Author from "../components/infopages/Author.astro";
+// import EntriesTwo from "../components/entries/EntriesTwo.astro";
+import MainEntry from "../components/entries/MainEntry.astro";
+import MainEntryGroup from "../components/entries/MainEntryGroup.astro";
 ---
 
 <AstroSeo
@@ -42,14 +46,81 @@ import { AstroSeo } from "@astrolib/seo";
   }}
 />
 <BaseLayout>
+  <Author />
+
   <section aria-labelledby="your-label" id="your-id">
+    <div class="max-w-7xl mx-auto px-8 py-12 lg:px-24">
+      <h3
+        class="text-base uppercase font-semibold leading-6 text-black lg:text-2xl"
+      >
+        Latest articles
+      </h3>
+      <div
+        class="mx-auto grid grid-cols-1 gap-x-8 mt-12 gap-y-12 lg:grid-cols-2 sm:gap-y-16 items-start"
+      >
+        <div class="grid gap-y-3 divide-y [&>*:nth-child(2)]:pt-6">
+          {
+            allPosts
+              .sort(
+                (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+              )
+              .slice(0, 2)
+              .map((post) => (
+                <MainEntry
+                  url={"/posts/" + post.slug}
+                  title={post.data.title}
+                  description={post.data.description}
+                  alt={post.data.title}
+                  pubDate={post.data.pubDate.toString().slice(0, 10)}
+                  author={post.data.author}
+                  image={post.data.ogImage}
+                />
+              ))
+          }
+        </div>
+        <div
+          class="mx-auto w-full grid grid-cols-1 sm:grid-cols-3 gap-6 lg:gap-0 lg:grid-cols-1 sm:divide-transparent lg:divide divide-y divide-neutral-700 pt-12 sm:pt-16 lg:mx-0 lg:max-w-none lg:pt-0 [&>*:nth-child(1)]:pt-0 items-start"
+        >
+          {
+            allPosts
+              .slice(2, 8)
+              .sort(
+                (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+              )
+              .map((post) => (
+                <MainEntryGroup
+                  url={"/posts/" + post.slug}
+                  title={post.data.title}
+                  description={post.data.description}
+                  alt={post.data.title}
+                  pubDate={post.data.pubDate.toString().slice(0, 10)}
+                  author={post.data.author}
+                  image={post.data.ogImage}
+                />
+              ))
+          }
+        </div>
+      </div>
+      <div class="mt-10 flex items-center justify-center w-full">
+        <a
+          href="/blog"
+          title="#"
+          class="bg-inherit border-2 border-black px-3.5 lg:px-16 py-2.5 lg:py-3 text-xl lg:text-2xl text-black duration-200 hover:bg-black focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 justify-center focus-visible:outline-white hover:text-white w-full lg:w-auto inline-flex items-center"
+          >All posts</a
+        >
+      </div>
+    </div>
+  </section>
+  <!-- <section aria-labelledby="your-label" id="your-id">
     <div class="max-w-7xl mx-auto px-8 lg:px-24 py-12">
       <h3
-        class="text-base uppercase font-semibold leading-6 text-black lg:text-2xl">
+        class="text-base uppercase font-semibold leading-6 text-black lg:text-2xl"
+      >
         Lates blog entries
       </h3>
       <ul
-        class="grid grid-cols-1 lg:grid-cols-3 sm:grid-cols-2 gap-x-3 gap-y-24 lg:gap-x-12 mt-12">
+        class="grid grid-cols-1 lg:grid-cols-3 sm:grid-cols-2 gap-x-3 gap-y-24 lg:gap-x-12 mt-12"
+      >
         {
           allPosts
             .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
@@ -67,7 +138,7 @@ import { AstroSeo } from "@astrolib/seo";
         }
       </ul>
     </div>
-  </section>
+  </section> -->
 
-  <HighlightedNews />
+  <!-- <HighlightedNews /> -->
 </BaseLayout>

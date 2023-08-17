@@ -1,35 +1,37 @@
+---
+import { getCollection } from "astro:content";
+
+const meta = await getCollection("meta");
+
+const hero = meta.find((item) => item.slug === "hero");
+const { Content } = await hero?.render();
+---
+
 <section aria-labelledby="your-label" id="your-id">
   <div class="max-w-7xl mx-auto px-8 py-12 lg:px-24">
     <div>
-      <h1 class="text-black text-3xl lg:text-8xl font-bold">Meet the author</h1>
+      <h1 class="text-black text-2xl lg:text-4xl font-bold">Welcome!</h1>
     </div>
 
     <div
-      class="grid grid-cols-1 gap-6 lg:grid-cols-2 lg:gap-24 items-center pt-12">
+      class="grid grid-cols-1 gap-6 lg:grid-cols-2 lg:gap-24 items-center pt-12"
+    >
       <div>
-        <img class="w-full" src="/mike.jpg" alt="" />
+        <img class="w-full" src="/b-w-profile.jpg" alt="" />
       </div>
       <dl class="grid grid-cols-1 gap-6 md:grid-cols-2">
         <div class="md:col-span-2">
-          <h1 class="text-black text-3xl lg:text-6xl font-bold">Hemingway</h1>
-          <p class="text-neutral-500 mt-4">
-            I am a bestselling author known for my gripping and
-            emotionally-charged novels. I was born and raised in a small town in
-            the Midwest and always had a passion for writing. As a child, I
-            would spend hours scribbling stories in notebooks and dreaming up
-            new characters.
-          </p>
+          <h1 class="text-black text-3xl lg:text-6xl font-bold">
+            {hero?.data.title}
+          </h1>
+          <div class="text-neutral-500 mt-4 prose text-md">
+            <Content />
+          </div>
         </div>
-        <div>
+        <!-- <div>
           <dt class="text-black font-medium">Name</dt>
           <dd class="text-neutral-500 font-medium flex flex-col">
-            <span>Michael Andreuzza</span>
-          </dd>
-        </div>
-        <div>
-          <dt class="text-black font-medium">Nationality</dt>
-          <dd class="text-neutral-500 font-medium flex flex-col">
-            <span>Spaniard</span>
+            <span>Darko Bozhinovski</span>
           </dd>
         </div>
         <div>
@@ -49,7 +51,7 @@
           <dd class="text-neutral-500 font-medium flex flex-col">
             <a href="https://twitter.com/Mike_Andreuzza">@Mike_andreuzza</a>
           </dd>
-        </div>
+        </div> -->
       </dl>
     </div>
   </div>

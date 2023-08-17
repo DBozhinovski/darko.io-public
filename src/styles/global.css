@@ -2,9 +2,13 @@
 @tailwind components;
 @tailwind utilities;
 /* CSS */
-:root { font-family: 'Poppins', sans-serif; }
+:root {
+  font-family: "Poppins", sans-serif;
+}
 @supports (font-variation-settings: normal) {
-  :root { font-family: 'Poppins', sans-serif; }
+  :root {
+    font-family: "Poppins", sans-serif;
+  }
 }
 :root {
   --astro-code-color-text: #000000;
@@ -20,3 +24,12 @@
   --astro-code-token-link: #000000;
 }
 /* Transition on the summary tag by faking the bottom maring*/
+
+/* .dark a {
+  color: rgba(96, 165, 250, 1);
+}
+
+.dark code,
+.dark strong {
+  color: #e5e7eb;
+} */

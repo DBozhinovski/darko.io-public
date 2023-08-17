@@ -2,13 +2,12 @@
 const defaultTheme = require("tailwindcss/defaultTheme");
 const colors = require("tailwindcss/colors");
 module.exports = {
-	content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'],
-	theme: {
+  content: ["./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}"],
+  theme: {
     extend: {
-
       colors: {
         black: "#121212",
-orange: {
+        orange: {
           50: "#FFE9E5",
           100: "#FFD4CC",
           200: "#FFA899",
@@ -20,19 +19,30 @@ orange: {
           800: "#660F00",
           900: "#330800",
         },
-
       },
       fontFamily: {
-
         sans: ["Poppins", ...defaultTheme.fontFamily.sans],
         mono: ["JetBrains Mono", ...defaultTheme.fontFamily.mono],
       },
     },
+    nightwind: {
+      typography: {
+        a: {
+          color: "rgba(96, 165, 250, 1)",
+        },
+        code: {
+          color: "#e5e7eb",
+        },
+        strong: {
+          color: "#e5e7eb",
+        },
+      },
+    },
   },
-	plugins: [
-    require('@tailwindcss/typography'),
-    require('@tailwindcss/forms'),
-		require('@tailwindcss/aspect-ratio'),
-    require("nightwind")
-	],
-}
+  plugins: [
+    require("@tailwindcss/typography"),
+    require("@tailwindcss/forms"),
+    require("@tailwindcss/aspect-ratio"),
+    require("nightwind"),
+  ],
+};

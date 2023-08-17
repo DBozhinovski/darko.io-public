@@ -1,6 +1,7 @@
 ---
 import "../styles/global.css";
 import { ViewTransitions } from "astro:transitions";
+import nightwind from "nightwind/helper";
 ---
 
 <meta charset="utf-8" />
@@ -49,10 +50,7 @@ import { ViewTransitions } from "astro:transitions";
 ></script>
 <script defer src="https://unpkg.com/alpinejs@3.10.5/dist/cdn.min.js"></script>
 
-<script>
-  import nightwind from "nightwind/helper";
-
-  nightwind.init();
-</script>
+<!-- Dark mode -->
+<script set:html={nightwind.init()} />
 
 <ViewTransitions />
