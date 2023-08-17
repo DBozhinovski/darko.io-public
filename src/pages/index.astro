@@ -111,34 +111,4 @@ import MainEntryGroup from "../components/entries/MainEntryGroup.astro";
       </div>
     </div>
   </section>
-  <!-- <section aria-labelledby="your-label" id="your-id">
-    <div class="max-w-7xl mx-auto px-8 lg:px-24 py-12">
-      <h3
-        class="text-base uppercase font-semibold leading-6 text-black lg:text-2xl"
-      >
-        Lates blog entries
-      </h3>
-      <ul
-        class="grid grid-cols-1 lg:grid-cols-3 sm:grid-cols-2 gap-x-3 gap-y-24 lg:gap-x-12 mt-12"
-      >
-        {
-          allPosts
-            .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
-            .map((post) => (
-              <EntriesOne
-                url={"/posts/" + post.slug}
-                title={post.data.title}
-                description={post.data.description}
-                alt={post.data.title}
-                pubDate={post.data.pubDate.toString().slice(0, 10)}
-                author={post.data.author}
-                image={post.data.ogImage}
-              />
-            ))
-        }
-      </ul>
-    </div>
-  </section> -->
-
-  <!-- <HighlightedNews /> -->
 </BaseLayout>

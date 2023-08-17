@@ -3,7 +3,7 @@ import nightwind from "nightwind/helper";
 export const ThemeSwitch = () => {
   return (
     <button
-      class="text-neutral-500 hover:text-neutral-500"
+      class="text-neutral-500 hover:text-neutral-700"
       onClick={() => {
         nightwind.toggle();
       }}

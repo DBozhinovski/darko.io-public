@@ -43,26 +43,25 @@ import { ThemeSwitch } from "../ThemeSwitch";
     </div>
     <nav
       :class="{'flex': open, 'hidden': !open}"
-      class="flex-col items-center flex-grow hidden md:pb-0 md:flex md:justify-start md:flex-row"
+      class="flex-col items-center flex-grow hidden md:pb-0 md:flex md:justify-start md:flex-row md:pl-6"
     >
       <a
-        class="px-2 py-4 md:py-2 text-sm text-black lg:px-6 md:px-3 hover:text-neutral-500 uppercase font-medium"
-        href="/overview"
+        class="px-2 py-4 md:py-2 text-sm text-black hover:text-neutral-500 uppercase font-medium"
+        href="/blog"
       >
-        Overview
+        Blog
       </a>
       <a
-        class="px-2 py-4 md:py-2 text-sm text-black lg:px-6 md:px-3 hover:text-neutral-500 uppercase font-medium"
-        href="/style-guide"
+        class="px-2 py-4 md:py-2 text-sm text-black hover:text-neutral-500 uppercase font-medium"
+        href="/work"
       >
-        Style Guide
+        Work
       </a>
-
       <div class="inline-flex items-center md:ml-auto">
         <div class="flex space-x-6">
           <a
             href="https://twitter.com/d_bozhinovski"
-            class="text-neutral-500 hover:text-neutral-500"
+            class="text-neutral-500 hover:text-neutral-700"
           >
             <span class="sr-only">Twitter</span>
             <svg
@@ -79,7 +78,7 @@ import { ThemeSwitch } from "../ThemeSwitch";
 
           <a
             href="https://github.com/DBozhinovski"
-            class="text-neutral-500 hover:text-neutral-500"
+            class="text-neutral-500 hover:text-neutral-700"
           >
             <span class="sr-only">GitHub</span>
             <svg
@@ -97,7 +96,7 @@ import { ThemeSwitch } from "../ThemeSwitch";
 
           <a
             href="https://www.youtube.com/channel/UCtCyVHiEXMOHaVGbnKuU4VA"
-            class="text-neutral-500 hover:text-neutral-500"
+            class="text-neutral-500 hover:text-neutral-700"
           >
             <span class="sr-only">YouTube</span>
             <svg
@@ -113,21 +112,24 @@ import { ThemeSwitch } from "../ThemeSwitch";
             </svg>
           </a>
 
-          <!-- <button id="darkmode" class="text-neutral-500 hover:text-neutral-500">
+          <a
+            href="https://www.linkedin.com/in/darkobozhinovski/"
+            class="text-neutral-500 hover:text-neutral-700"
+          >
+            <span class="sr-only">LinkedIn</span>
             <svg
-              class="w-6 h-6"
+              class="h-6 w-6"
+              fill="currentColor"
               viewBox="0 0 24 24"
+              aria-hidden="true"
               xmlns="http://www.w3.org/2000/svg"
             >
-              <g fill="currentColor">
-                <path d="M12 16a4 4 0 0 0 0-8v8Z"></path>
-                <path
-                  fill-rule="evenodd"
-                  d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10s10-4.477 10-10S17.523 2 12 2Zm0 2v4a4 4 0 1 0 0 8v4a8 8 0 1 0 0-16Z"
-                  clip-rule="evenodd"></path>
-              </g>
+              <path
+                fill="currentColor"
+                d="M20.47 2H3.53a1.45 1.45 0 0 0-1.47 1.43v17.14A1.45 1.45 0 0 0 3.53 22h16.94a1.45 1.45 0 0 0 1.47-1.43V3.43A1.45 1.45 0 0 0 20.47 2ZM8.09 18.74h-3v-9h3ZM6.59 8.48a1.56 1.56 0 1 1 0-3.12a1.57 1.57 0 1 1 0 3.12Zm12.32 10.26h-3v-4.83c0-1.21-.43-2-1.52-2A1.65 1.65 0 0 0 12.85 13a2 2 0 0 0-.1.73v5h-3v-9h3V11a3 3 0 0 1 2.71-1.5c2 0 3.45 1.29 3.45 4.06Z"
+              ></path>
             </svg>
-          </button> -->
+          </a>
           <div>
             <ThemeSwitch client:load />
           </div>
