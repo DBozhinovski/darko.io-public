@@ -1,5 +1,6 @@
 ---
 title: "Press Kit (English)"
+layout: "../layouts/MarkdownPostLayout.astro"
 ---
 
 ## Photo
@@ -22,6 +23,7 @@ He collaborates with several companies in the IT sector in various roles as a co
 - I have delivered more than 15 technical presentations to audiences with varying levels of expertise.
 
 ## Contact
+
 - E-mail: hello@darko.io
 - LinkedIn: https://www.linkedin.com/in/darkobozhinovski/
 - Twitter: https://twitter.com/d_bozhinovski

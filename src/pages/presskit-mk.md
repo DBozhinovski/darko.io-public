@@ -1,5 +1,6 @@
 ---
 title: "Press Kit (македонски)"
+layout: "../layouts/MarkdownPostLayout.astro"
 ---
 
 ## Слика

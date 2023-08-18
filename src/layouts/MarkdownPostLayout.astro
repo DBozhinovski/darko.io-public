@@ -52,53 +52,80 @@ import { format } from "date-fns";
         <p class="text-neutral-500 font-mono text-2xl mx-auto">
           <em>{frontmatter.description}</em>
         </p>
-        <div>
-          <ol
-            role="list"
-            class="mt-8 divide-y divide-neutral-300/30 text-base tracking-tight"
-          >
-            <li
-              class="flex justify-between flex-col md:flex-row py-3"
-              aria-label="Getting started on page 1"
-            >
-              <span class="font-light text-black" aria-hidden="true">Date</span
-              ><span class="font-mono text-neutral-500" aria-hidden="true"
-                >{format(frontmatter.pubDate, "yyyy-MM-dd")}</span
+        {
+          frontmatter.pubDate && (
+            <div>
+              <ol
+                role="list"
+                class="mt-8 divide-y divide-neutral-300/30 text-base tracking-tight"
               >
-            </li><li
-              class="flex justify-between flex-col md:flex-row py-3"
-              aria-label="Intro to Figma on page 15"
-            >
-              <span class="font-light text-black" aria-hidden="true"
-                >Author</span
-              ><span class="font-mono text-neutral-500" aria-hidden="true"
-                >{frontmatter.author}</span
-              >
-            </li>
-            <li
-              class="flex justify-between flex-col md:flex-row py-3"
-              aria-label="Setting up your first artboard on page 20"
-            >
-              <span class="font-light text-black" aria-hidden="true"
-                >Category</span
-              ><span
-                class="font-mono text-neutral-500 divide-x divide-neutral-700 gap-3"
-                aria-hidden="true"
-                >{
-                  frontmatter.tags.map((tag) => (
+                <>
+                  <li
+                    class="flex justify-between flex-col md:flex-row py-3"
+                    aria-label="Getting started on page 1"
+                  >
                     <>
-                      <a class="pl-2" href={`/tags/${tag}`}>
-                        {tag}
-                      </a>
+                      <span class="font-light text-black" aria-hidden="true">
+                        Date
+                      </span>
+                      <span
+                        class="font-mono text-neutral-500"
+                        aria-hidden="true"
+                      >
+                        {frontmatter.pubDate &&
+                          format(frontmatter.pubDate, "yyyy-MM-dd")}
+                      </span>
                     </>
-                  ))
-                }</span
-              >
-            </li>
-          </ol>
-        </div>
+                  </li>
+                  <li
+                    class="flex justify-between flex-col md:flex-row py-3"
+                    aria-label="Intro to Figma on page 15"
+                  >
+                    <>
+                      <span class="font-light text-black" aria-hidden="true">
+                        Author
+                      </span>
+                      <span
+                        class="font-mono text-neutral-500"
+                        aria-hidden="true"
+                      >
+                        {frontmatter.author}
+                      </span>
+                    </>
+                  </li>
+                </>
+                <li
+                  class="flex justify-between flex-col md:flex-row py-3"
+                  aria-label="Setting up your first artboard on page 20"
+                >
+                  <>
+                    <span class="font-light text-black" aria-hidden="true">
+                      Category
+                    </span>
+                    <span
+                      class="font-mono text-neutral-500 divide-x divide-neutral-700 gap-3"
+                      aria-hidden="true"
+                    >
+                      {frontmatter?.tags?.map((tag) => (
+                        <>
+                          <a class="pl-2" href={`/tags/${tag}`}>
+                            {tag}
+                          </a>
+                        </>
+                      ))}
+                    </span>
+                  </>
+                </li>
+              </ol>
+            </div>
+          )
+        }
       </div>
-      <img src={frontmatter.ogImage} alt="image" class="mt-8 w-full" />
+      {
+        frontmatter.ogImage && (
+          <img src={frontmatter.ogImage} alt="image" class="mt-8 w-full" />
+        )
+      }
     </div>
   </section>
   <section aria-labelledby="your-label" id="your-id">
