@@ -3,7 +3,7 @@ import BaseLayout from "./BaseLayout.astro";
 const { frontmatter } = Astro.props;
 import CtaTwo from "../components/cta/CtaTwo.astro";
 import { AstroSeo } from "@astrolib/seo";
-import { format } from 'date-fns';
+import { format } from "date-fns";
 ---
 
 <AstroSeo
@@ -55,17 +55,20 @@ import { format } from 'date-fns';
         <div>
           <ol
             role="list"
-            class="mt-8 divide-y divide-neutral-300/30 text-base tracking-tight">
+            class="mt-8 divide-y divide-neutral-300/30 text-base tracking-tight"
+          >
             <li
               class="flex justify-between flex-col md:flex-row py-3"
-              aria-label="Getting started on page 1">
+              aria-label="Getting started on page 1"
+            >
               <span class="font-light text-black" aria-hidden="true">Date</span
               ><span class="font-mono text-neutral-500" aria-hidden="true"
-                >{format(frontmatter.pubDate, 'yyyy-MM-dd')}</span
+                >{format(frontmatter.pubDate, "yyyy-MM-dd")}</span
               >
             </li><li
               class="flex justify-between flex-col md:flex-row py-3"
-              aria-label="Intro to Figma on page 15">
+              aria-label="Intro to Figma on page 15"
+            >
               <span class="font-light text-black" aria-hidden="true"
                 >Author</span
               ><span class="font-mono text-neutral-500" aria-hidden="true"
@@ -74,7 +77,8 @@ import { format } from 'date-fns';
             </li>
             <li
               class="flex justify-between flex-col md:flex-row py-3"
-              aria-label="Setting up your first artboard on page 20">
+              aria-label="Setting up your first artboard on page 20"
+            >
               <span class="font-light text-black" aria-hidden="true"
                 >Category</span
               ><span
@@ -100,10 +104,11 @@ import { format } from 'date-fns';
   <section aria-labelledby="your-label" id="your-id">
     <div class="max-w-7xl mx-auto px-8 pb-16 pt-2 lg:px-24">
       <div
-        class="mx-auto hover:prose-a:text-black font-light lg:prose-xl prose prose-a:text-blue-500 prose-blockquote:border-l-black prose-blockquote:text-black prose-bloquote:text-5xl prose-headings:font-medium prose-headings:text-black prose-li:marker:text-black text-neutral-600 py-10 prose-pre:border prose-img:w-full">
+        class="mx-auto hover:prose-a:text-black font-light lg:prose-xl prose prose-a:text-blue-500 prose-blockquote:border-l-black prose-blockquote:text-black prose-bloquote:text-5xl prose-headings:font-medium prose-headings:text-black prose-li:marker:text-black text-neutral-600 py-10 prose-pre:border prose-img:w-full"
+      >
         <slot />
       </div>
     </div>
   </section>
-  <CtaTwo />
+  <!-- <CtaTwo /> -->
 </BaseLayout>

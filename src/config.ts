@@ -3,8 +3,8 @@ import type { SocialsObject } from "./types";
 export const SITE = {
   website: "https://darko.io/",
   author: "Darko Bozhinovski",
-  desc: "Darko's corner of the internet.",
-  title: "Darko's corner of the internet.",
+  desc: "Darko's Corner",
+  title: "Darko's Corner",
   ogImage: "default-og.png",
   lightAndDarkMode: true,
   postPerPage: 5,

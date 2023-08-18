@@ -1,7 +1,7 @@
 ---
-layout: ../layouts/AboutLayout.astro
 title: "About"
 ---
+
 <p class="relative pb-40">
   <img src="/profile.jpg" class="rounded-full w-36 h-36 absolute">
 </p>
@@ -14,7 +14,7 @@ title: "About"
 - I run a local JS meetup, [BeerJS Skopje](https://beerjs.mk/). I helped start a local conference as well,
   [DevCon](https://devcon.dev).
 - I'm a through-and-through Linux nerd.
-- I also love gaming - PC, consoles, or tabletop (D&D especially). 
+- I also love gaming - PC, consoles, or tabletop (D&D especially).
 - I love gardening, especially growing peppers - currently growing 20+ species, of the extremely hot ones. I'm also into making hot sauce.
 - I used to draw and paint to relax. I also had an exhibition once. I'll get back to it one of these days 😅
 

@@ -1,7 +1,7 @@
 {
-  "name": "@lexington/blog",
+  "name": "darko.io",
   "type": "module",
-  "version": "0.0.1",
+  "version": "3.0.0",
   "private": true,
   "scripts": {
     "dev": "astro dev",
@@ -19,6 +19,7 @@
     "@astrojs/solid-js": "^2.2.0",
     "@astrojs/tailwind": "^4.0.0",
     "astro": "^2.10.8",
+    "astro-webmanifest": "^0.6.0",
     "date-fns": "^2.30.0",
     "mdast-util-to-string": "^4.0.0",
     "nightwind": "^1.1.13",
