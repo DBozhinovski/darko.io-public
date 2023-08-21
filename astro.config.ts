@@ -62,41 +62,51 @@ const og = () => ({
           "public/JetBrainsMono-Regular.ttf"
         );
 
-        console.log(pages);
+        console.log(jetBrainsMono);
 
         for (const { pathname } of pages) {
-          if (pathname.startsWith("posts/")) continue;
-          console.log(pathname);
-          const file = fs.readFileSync(
-            `src/content/posts/${pathname.slice(2, -1)}.md`
-          );
+          console.log("pathname", pathname);
+          if (pathname && pathname.startsWith("posts/")) {
+            console.log(
+              "reading",
+              `src/content/${pathname.slice(0, pathname.length - 1)}.md`
+            );
+            const file = fs.readFileSync(
+              `src/content/${pathname.slice(0, pathname.length - 1)}.md`
+            );
 
-          console.log(file);
-          // const file = fs.readFileSync("src/content/" + path + ".mdx");
-          const { title } = parseFrontmatter(file).data;
-          const svg = await satori(render(title), {
-            width: 1200,
-            height: 630,
-            fonts: [
-              {
-                name: "JetBrains Mono",
-                data: jetBrainsMono,
-                weight: 400,
-                style: "normal",
+            // console.log(parseFrontmatter(file).data);
+            // console.log(file);
+            // const file = fs.readFileSync("src/content/" + path + ".mdx");
+            const { title } = parseFrontmatter(file).data;
+            // console.log(title);
+
+            const svg = await satori(render(title), {
+              width: 1200,
+              height: 630,
+              fonts: [
+                {
+                  name: "JetBrains Mono",
+                  data: jetBrainsMono,
+                  weight: 400,
+                  style: "normal",
+                },
+              ],
+            });
+
+            console.log(svg);
+
+            const resvg = new Resvg(svg, {
+              fitTo: {
+                mode: "width",
+                value: 1200,
               },
-            ],
-          });
-
-          const resvg = new Resvg(svg, {
-            fitTo: {
-              mode: "width",
-              value: 1200,
-            },
-          });
-          fs.writeFileSync(
-            `${dir.pathname}${pathname}og.png`,
-            resvg.render().asPng()
-          );
+            });
+            fs.writeFileSync(
+              `${dir.pathname}${pathname}og.png`,
+              resvg.render().asPng()
+            );
+          }
         }
 
         console.log(`\x1b[32mog:\x1b[0m Generated OpenGraph images\n`);
