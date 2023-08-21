@@ -1,7 +1,7 @@
 ---
 import BaseLayout from "./BaseLayout.astro";
 const { frontmatter } = Astro.props;
-import CtaTwo from "../components/cta/CtaTwo.astro";
+// import CtaTwo from "../components/cta/CtaTwo.astro";
 import { AstroSeo } from "@astrolib/seo";
 import { format } from "date-fns";
 ---
@@ -9,34 +9,34 @@ import { format } from "date-fns";
 <AstroSeo
   title={frontmatter.title}
   description={frontmatter.description}
-  canonical="https://www.lexingtonthemes.com"
+  canonical={frontmatter.canonical || Astro.url.toString()}
   openGraph={{
-    url: "https://www.lexingtonthemes.com",
-    title: "Title}",
-    description: "{frontmatter.description}",
+    url: Astro.url.toString(),
+    title: frontmatter.title,
+    description: frontmatter.description,
     images: [
       {
-        url: "https://www.lexingtonthemes.com/opengraph/social-og.jpg",
+        url: new URL(Astro.url.pathname + "og.png", Astro.site).toString(),
         width: 1200,
         height: 630,
         alt: "Social open graph",
         type: "image/jpeg",
       },
       {
-        url: "https://www.lexingtonthemes.com/opengraph/twitter-og.jpg",
+        url: new URL(Astro.url.pathname + "og.png", Astro.site).toString(),
         width: 4096,
         height: 4096,
         alt: "Twitter open graph",
         type: "image/jpeg",
       },
-      { url: "https://www.lexingtonthemes.com/opengraph/social-og.jpg" },
-      { url: "https://www.lexingtonthemes.com/opengraph/twitter-og.jpg" },
+      { url: new URL(Astro.url.pathname + "og.png", Astro.site).toString() },
+      { url: new URL(Astro.url.pathname + "og.png", Astro.site).toString() },
     ],
-    site_name: "YourSitesName",
+    site_name: "Darko's Corner",
   }}
   twitter={{
-    handle: "@TwitterHandle",
-    site: "@site",
+    handle: "@d_bozhinovski",
+    site: Astro.url.toString(),
     cardType: "summary_large_image",
   }}
 />
