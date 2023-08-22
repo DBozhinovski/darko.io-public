@@ -1,15 +1,15 @@
 ---
 author: Darko Bozhinovski
-title: 'Building an offline chatbot, part 2'
+title: "Building an offline chatbot, part 2"
 pubDate: 2018-08-20
-tags: ['chatbot', 'offline']
+tags: ["chatbot", "offline"]
 description:
-  'Building you an offline chatbot for great good. On the how, why and possibilities when it comes to building such
-  things. Part 2.'
-ogImage: '/alex-knight-2EJCSULRwC8-unsplash.jpg'
+  "Building you an offline chatbot for great good. On the how, why and possibilities when it comes to building such
+  things. Part 2."
+ogImage: "/alex-knight-2EJCSULRwC8-unsplash.jpg"
 ---
 
-[Last time](/post/offline-chatbot/), we got down the basics of making a chatbot that runs offline but can only greet us.
+[Last time](/posts/offline-chatbot-pt1), we got down the basics of making a chatbot that runs offline but can only greet us.
 This time around, we'll get to making it a tad smarter and teaching it a couple of tricks. To make that happen, first,
 we'll take a step back and have a short look at the project structure since I realized I completely omitted that last
 time. We won't get into the finer points of `create-react-app` of course, but some context is always helpful.
@@ -51,7 +51,9 @@ Expanding on what we went over last time, first we get into the functionality th
 const getReply = async (input) => {
   // As mentioned previously - locate a rule that matches the input NLP analysis
   const skillMatch = skills.find((s) => {
-    const ruleMatch = s.matchRules.find((r) => nlp(input).normalize().match(r).found);
+    const ruleMatch = s.matchRules.find(
+      (r) => nlp(input).normalize().match(r).found
+    );
 
     // If we find one, return that;
     // Not ideal, but will get to this later.
@@ -65,12 +67,12 @@ const getReply = async (input) => {
   if (skillMatch) {
     // Keep some historical data of what we matched -
     // we can use that later to make some fancier improvements.
-    const topicHistory = get(context, 'topics') || [];
+    const topicHistory = get(context, "topics") || [];
     topicHistory.push(skillMatch.ID);
     // Also keep a "context" - or what we're currently talking about.
     // For clarity, context is a JSON object that contains a list of
     // matched topics, plus some metadata for the topics themselves.
-    set(context, 'topics', topicHistory);
+    set(context, "topics", topicHistory);
     // Trigger the reply function of the matched skill (see below for details).
     const reply = await skillMatch.reply(input, context);
     // Pass that on for showing it to the DOM.
@@ -78,7 +80,7 @@ const getReply = async (input) => {
   } else {
     // If we get no match, return something generic plus the help command,
     // to help the user continue the conversation.
-    return { mode: 'text', value: 'Beep Boop! (type help)' };
+    return { mode: "text", value: "Beep Boop! (type help)" };
   }
 };
 ```
@@ -94,7 +96,7 @@ replying to. So, let's take a closer look at the "greet" skill from last time, a
 
 ```js
 // The skill's ID - mostly for "bookkeeping"
-const ID = 'greet';
+const ID = "greet";
 
 // A custom lexicon, which this particular skill doesn't use
 const lexicon = {};
@@ -102,7 +104,7 @@ const lexicon = {};
 // What input triggers this response;
 // These are similar to regex, with some extra stuff included.
 // More here: https://github.com/spencermountain/compromise/wiki/Match-Syntax
-const matchRules = ['(hi|hello|ahoy|greetings|#Expression) bot?'];
+const matchRules = ["(hi|hello|ahoy|greetings|#Expression) bot?"];
 
 // A list of potential replies, from which we pick at random;
 // Done this way in order not to get too boring ;)
@@ -111,40 +113,40 @@ const replies = [
   // It tries to determine whether we already know the user.
   (input, ctx) => {
     return {
-      mode: 'text',
+      mode: "text",
       // If it happens to find a name, stored by the "intro" skill,
       // it uses that name to greet the user.
       // More here: https://github.com/DBozhinovski/beerjs-bot/blob/master/src/skills/intro.js
-      value: get(ctx, 'intro.name')
-        ? `Hello ${ctx.intro.name.split(' ')[0]}.`
+      value: get(ctx, "intro.name")
+        ? `Hello ${ctx.intro.name.split(" ")[0]}.`
         : `Beep boop, I'm a dumb bot. Who are you?`,
     };
   },
-  () => ({ mode: 'text', value: 'Hi there.' }),
-  () => ({ mode: 'text', value: "What's up?" }),
+  () => ({ mode: "text", value: "Hi there." }),
+  () => ({ mode: "text", value: "What's up?" }),
   // Another difference over last time:
   // Using react components to return images in addition to text;
   // Makes thins a bit fancier and more interactive.
   // Determined by the 'mode' param, which can take the
   // values of 'img' or 'text'.
   () => ({
-    mode: 'img',
-    value: 'https://media.giphy.com/media/FBeSx3itXlUQw/giphy.gif',
+    mode: "img",
+    value: "https://media.giphy.com/media/FBeSx3itXlUQw/giphy.gif",
   }),
   () => ({
-    mode: 'img',
-    value: 'https://media.giphy.com/media/BVStb13YiR5Qs/giphy.gif',
+    mode: "img",
+    value: "https://media.giphy.com/media/BVStb13YiR5Qs/giphy.gif",
   }),
 ];
 
 // The reply function, triggered when the "brain" matches this skill (see above)
 const reply = (input, context) => {
-  const timesMatched = get(context, 'greet.matched', 0);
+  const timesMatched = get(context, "greet.matched", 0);
   // Set the context data
-  set(context, 'greet.matched', timesMatched + 1);
+  set(context, "greet.matched", timesMatched + 1);
 
   // Write the context data to keep it after a browser reload
-  localStorage.setItem('bjs-bot-context', JSON.stringify(context));
+  localStorage.setItem("bjs-bot-context", JSON.stringify(context));
 
   // Get a random reply
   const replyRoll = random(0, replies.length - 1);
@@ -208,21 +210,21 @@ On to the code part itself (`/src/skills/dadjoke.js`):
 
 ```js
 // The ID of the skill
-const ID = 'dadjoke';
+const ID = "dadjoke";
 
 // No custon lexicon / overrides
 const lexicon = {};
 
 // We compress a couple of sentences that ask for a joke
-const matchRules = ['(know|tell)? (any|me)? a? (joke|jokes)'];
+const matchRules = ["(know|tell)? (any|me)? a? (joke|jokes)"];
 
 const reply = async (input, context) => {
   // We fetch a random dadjoke in plaintext,
   // identifying as beerbot (just being a good internet citizen)
-  const reply = await fetch('https://icanhazdadjoke.com/', {
+  const reply = await fetch("https://icanhazdadjoke.com/", {
     headers: {
-      Accept: 'text/plain',
-      'User-Agent': 'beerbot',
+      Accept: "text/plain",
+      "User-Agent": "beerbot",
     },
   });
 
@@ -232,7 +234,7 @@ const reply = async (input, context) => {
 
   // Return the joke for rendering on screen
   return {
-    mode: 'text',
+    mode: "text",
     value: joke,
   };
 };

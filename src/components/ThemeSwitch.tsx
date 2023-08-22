@@ -7,6 +7,7 @@ export const ThemeSwitch = () => {
       onClick={() => {
         nightwind.toggle();
       }}
+      title="Toggle Dark Mode"
     >
       <svg
         class="w-6 h-6"

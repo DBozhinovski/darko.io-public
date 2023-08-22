@@ -2,10 +2,9 @@
 author: Darko Bozhinovski
 title: "Swag corner stories - 1. Chokanche"
 pubDate: 2022-12-11
-tags: ['swag corner', 'shorts']
-description:
-  'A trip down memory lane, from the swag corner of my office. Part 1.'
-ogImage: '/1670609537652.jpeg'
+tags: ["swag corner", "shorts"]
+description: "A trip down memory lane, from the swag corner of my office. Part 1."
+ogImage: "/1670609537652.jpeg"
 ---
 
 This one isn't related to [BeerJS Skopje](https://beerjs.mk), but it is a lovely story worth sharing. So, swag corner story no. 1:
@@ -24,4 +23,4 @@ Now, I won't go into a lot of details, but let's say that Finns give us Balkan p
 
 ---
 
-[Story index](posts/swag-corner-stories---intro#story-index)
+[Story index](/posts/swag-corner-stories---intro#story-index)

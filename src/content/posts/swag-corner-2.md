@@ -2,10 +2,9 @@
 author: Darko Bozhinovski
 title: "Swag corner stories - 2. The DevCon badge"
 pubDate: 2022-12-16
-tags: ['swag corner', 'shorts', 'beerjs']
-description:
-  'A trip down memory lane, from the swag corner of my office. part 2.'
-ogImage: '/devcon_badge.webp'
+tags: ["swag corner", "shorts", "beerjs"]
+description: "A trip down memory lane, from the swag corner of my office. part 2."
+ogImage: "/devcon_badge.webp"
 ---
 
 After [BeerJS Skopje](https://beerjs.mk) became popular and filled the event venues consistently, we started thinking about doing more. We've been discussing doing an indie conference for some time, but it didn't go anywhere.
@@ -18,4 +17,4 @@ Still, team [BeerJS Skopje](https://beerjs.mk) isn't done. We have some cool stu
 
 ---
 
-[Story index](posts/swag-corner-stories---intro#story-index)
+[Story index](/posts/swag-corner-stories---intro#story-index)
