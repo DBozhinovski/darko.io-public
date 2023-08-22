@@ -21,7 +21,7 @@ const render = (title) => ({
       padding: "55px 70px",
       color: "#FFFFFF",
       fontFamily: "JetBrains Mono",
-      fontSize: 72,
+      fontSize: 64,
     },
     children: [
       {
@@ -65,8 +65,37 @@ const render = (title) => ({
       {
         type: "div",
         props: {
-          style: { marginTop: 96 },
+          style: { marginTop: 64 },
           children: title,
+        },
+      },
+      {
+        type: "div",
+        props: {
+          style: { marginTop: 48, fontSize: 24, color: "#eeeeee" },
+          children: "Darko's Corner | https://darko.io",
+        },
+      },
+      {
+        type: "div",
+        props: {
+          style: { marginTop: 16, fontSize: 18, color: "#eeeeee" },
+          children: "webdev | community | content",
+        },
+      },
+      {
+        type: "img",
+        props: {
+          src: "https://darko.io/b-w-profile.jpg",
+          width: "160px",
+          height: "160px",
+          style: {
+            position: "absolute",
+            right: 60,
+            bottom: 60,
+            borderRadius: "9999px",
+            transform: "scaleX(-1)",
+          },
         },
       },
     ],
