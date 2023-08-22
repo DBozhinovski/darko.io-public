@@ -231,98 +231,98 @@ declare module 'astro:content' {
   slug: "all-you-need-to-know-about-serverless-functions-and-the-edge";
   body: string;
   collection: "posts";
-  data: any
+  data: InferEntrySchema<"posts">
 } & { render(): Render[".md"] };
 "build-you-a-corona-tracker-the-hard-way.md": {
 	id: "build-you-a-corona-tracker-the-hard-way.md";
   slug: "build-you-a-corona-tracker-the-hard-way";
   body: string;
   collection: "posts";
-  data: any
+  data: InferEntrySchema<"posts">
 } & { render(): Render[".md"] };
 "colors-accessibility-and-plugins.md": {
 	id: "colors-accessibility-and-plugins.md";
   slug: "colors-accessibility-and-plugins";
   body: string;
   collection: "posts";
-  data: any
+  data: InferEntrySchema<"posts">
 } & { render(): Render[".md"] };
 "devrel-not-devsell.md": {
 	id: "devrel-not-devsell.md";
   slug: "devrel-not-devsell";
   body: string;
   collection: "posts";
-  data: any
+  data: InferEntrySchema<"posts">
 } & { render(): Render[".md"] };
 "offline-chatbot-pt1.md": {
 	id: "offline-chatbot-pt1.md";
   slug: "offline-chatbot-pt1";
   body: string;
   collection: "posts";
-  data: any
+  data: InferEntrySchema<"posts">
 } & { render(): Render[".md"] };
 "offline-chatbot-pt2.md": {
 	id: "offline-chatbot-pt2.md";
   slug: "offline-chatbot-pt2";
   body: string;
   collection: "posts";
-  data: any
+  data: InferEntrySchema<"posts">
 } & { render(): Render[".md"] };
 "on-meetups-community-and-principles.md": {
 	id: "on-meetups-community-and-principles.md";
   slug: "on-meetups-community-and-principles";
   body: string;
   collection: "posts";
-  data: any
+  data: InferEntrySchema<"posts">
 } & { render(): Render[".md"] };
 "swag-corner-2.md": {
 	id: "swag-corner-2.md";
   slug: "swag-corner-2";
   body: string;
   collection: "posts";
-  data: any
+  data: InferEntrySchema<"posts">
 } & { render(): Render[".md"] };
 "swag-corner-3.md": {
 	id: "swag-corner-3.md";
   slug: "swag-corner-3";
   body: string;
   collection: "posts";
-  data: any
+  data: InferEntrySchema<"posts">
 } & { render(): Render[".md"] };
 "swag-corner-stories---1-chokanche.md": {
 	id: "swag-corner-stories---1-chokanche.md";
   slug: "swag-corner-stories---1-chokanche";
   body: string;
   collection: "posts";
-  data: any
+  data: InferEntrySchema<"posts">
 } & { render(): Render[".md"] };
 "swag-corner-stories---intro.md": {
 	id: "swag-corner-stories---intro.md";
   slug: "swag-corner-stories---intro";
   body: string;
   collection: "posts";
-  data: any
+  data: InferEntrySchema<"posts">
 } & { render(): Render[".md"] };
 "the-case-for-agency-devex.md": {
 	id: "the-case-for-agency-devex.md";
   slug: "the-case-for-agency-devex";
   body: string;
   collection: "posts";
-  data: any
+  data: InferEntrySchema<"posts">
 } & { render(): Render[".md"] };
 "weird-node-version-errors.md": {
 	id: "weird-node-version-errors.md";
   slug: "weird-node-version-errors";
   body: string;
   collection: "posts";
-  data: any
+  data: InferEntrySchema<"posts">
 } & { render(): Render[".md"] };
 "wp-as-an-api.md": {
 	id: "wp-as-an-api.md";
   slug: "wp-as-an-api";
   body: string;
   collection: "posts";
-  data: any
+  data: InferEntrySchema<"posts">
 } & { render(): Render[".md"] };
 };
 
@@ -334,5 +334,5 @@ declare module 'astro:content' {
 
 	type AnyEntryMap = ContentEntryMap & DataEntryMap;
 
-	type ContentConfig = never;
+	type ContentConfig = typeof import("../src/content/config");
 }
