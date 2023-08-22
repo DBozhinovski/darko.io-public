@@ -19,21 +19,21 @@ import { format } from "date-fns";
     description: "webdev | community | content creation",
     images: [
       {
-        url: "/og-default.png",
+        url: `${Astro.url.toString()}/og-default.png`,
         width: 1200,
         height: 630,
         alt: "Social open graph",
         type: "image/png",
       },
       {
-        url: "/og-default.png",
+        url: `${Astro.url.toString()}/og-default.png`,
         width: 4096,
         height: 4096,
         alt: "Twitter open graph",
         type: "image/png",
       },
-      { url: "/og-default.png" },
-      { url: "/og-default.png" },
+      { url: `${Astro.url.toString()}/og-default.png` },
+      { url: `${Astro.url.toString()}/og-default.png` },
     ],
     site_name: "Darko's Corner",
   }}
