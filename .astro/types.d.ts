@@ -201,6 +201,13 @@ declare module 'astro:content' {
 
 	type ContentEntryMap = {
 		"drafts": {
+"find-your-tribe.md": {
+	id: "find-your-tribe.md";
+  slug: "find-your-tribe";
+  body: string;
+  collection: "drafts";
+  data: any
+} & { render(): Render[".md"] };
 "the-case-for-agency-devex-pt2.md": {
 	id: "the-case-for-agency-devex-pt2.md";
   slug: "the-case-for-agency-devex-pt2";
