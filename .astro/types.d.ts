@@ -201,13 +201,6 @@ declare module 'astro:content' {
 
 	type ContentEntryMap = {
 		"drafts": {
-"find-your-tribe.md": {
-	id: "find-your-tribe.md";
-  slug: "find-your-tribe";
-  body: string;
-  collection: "drafts";
-  data: any
-} & { render(): Render[".md"] };
 "the-case-for-agency-devex-pt2.md": {
 	id: "the-case-for-agency-devex-pt2.md";
   slug: "the-case-for-agency-devex-pt2";
@@ -257,6 +250,13 @@ declare module 'astro:content' {
 "devrel-not-devsell.md": {
 	id: "devrel-not-devsell.md";
   slug: "devrel-not-devsell";
+  body: string;
+  collection: "posts";
+  data: InferEntrySchema<"posts">
+} & { render(): Render[".md"] };
+"find-your-tribe.md": {
+	id: "find-your-tribe.md";
+  slug: "find-your-tribe";
   body: string;
   collection: "posts";
   data: InferEntrySchema<"posts">
