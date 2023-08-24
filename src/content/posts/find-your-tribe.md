@@ -1,7 +1,7 @@
 ---
 author: Darko Bozhinovski
 title: "Find your tribe - why developers need their crew"
-pubDate: 2023-08-22
+pubDate: 2023-08-24
 tags: ["community"]
 description: "On the importance of being part of a community as a developer."
 ogImage: "/william-white-TZCppMjaOHU-unsplash.jpg"
