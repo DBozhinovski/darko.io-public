@@ -1,11 +1,15 @@
 ---
+import { Image } from 'astro:assets';
+
 const { title, url, description, pubDate, author, image } = Astro.props;
 ---
 
 
 <a href={url} title={title} >
   <article class="mx-auto w-full lg:mx-0 lg:max-w-lg">
-    <img
+    <Image
+      width="1088"
+      height="500"
       class="aspect-[16/9] w-full object-cover sm:aspect-[2/1] lg:aspect-[3/2]"
       src={image}
       alt={title}

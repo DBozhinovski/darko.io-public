@@ -1,4 +1,6 @@
 ---
+import { Image } from 'astro:assets';
+
 const { title, url, description, pubDate, author, image } = Astro.props;
 ---
 
@@ -9,10 +11,12 @@ const { title, url, description, pubDate, author, image } = Astro.props;
     class="relative isolate flex flex-col gap-2 lg:gap-4 lg:flex-row items-start">
     <div
       class="relative aspect-[16/9] sm:aspect-[2/1] lg:aspect-square lg:w-64 lg:shrink-0">
-      <img
+      <Image
+        width="1088"
+        height="500"
+        class="absolute inset-0 h-full w-full object-cover"
         src={image}
         alt={title}
-        class="absolute inset-0 h-full w-full object-cover"
       />
     </div>
     <div>

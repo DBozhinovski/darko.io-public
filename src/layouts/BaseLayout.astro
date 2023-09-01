@@ -2,9 +2,10 @@
 import BaseHead from "../components/BaseHead.astro";
 import Navigation from "../components/global/Navigation.astro";
 import Footer from "../components/global/Footer.astro";
+
 ---
 
-<html lang="en" class="selection:bg-[#ff2700] selection:text-white">
+<html lang="en" class="selection:bg-[#ff2700] selection:text-white" transition:animate="none">
   <head>
     <BaseHead />
     <script
@@ -14,9 +15,11 @@ import Footer from "../components/global/Footer.astro";
       src="/js/script.js"></script>
   </head>
   <body class="bg-white">
-    <Navigation />
-    <slot />
-    <Footer />
+    <Navigation transition:persist />
+    <div transition:animate="initial">
+      <slot />
+    </div>
+    <Footer transition:persist />
 
     <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"
     ></script>

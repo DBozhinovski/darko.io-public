@@ -4,6 +4,7 @@ const { frontmatter } = Astro.props;
 // import CtaTwo from "../components/cta/CtaTwo.astro";
 import { AstroSeo } from "@astrolib/seo";
 import { format } from "date-fns";
+import { Image } from 'astro:assets'
 ---
 
 <AstroSeo
@@ -103,12 +104,12 @@ import { format } from "date-fns";
                       Category
                     </span>
                     <span
-                      class="font-mono text-neutral-500 divide-x divide-neutral-700 gap-3"
+                      class="font-mono text-neutral-500 divide-x divide-neutral-400 gap-3"
                       aria-hidden="true"
                     >
                       {frontmatter?.tags?.map((tag) => (
                         <>
-                          <a class="pl-2" href={`/tags/${tag}`}>
+                          <a class="pl-2 pr-2" href={`/tags/${tag}`}>
                             {tag}
                           </a>
                         </>
@@ -123,7 +124,7 @@ import { format } from "date-fns";
       </div>
       {
         frontmatter.ogImage && (
-          <img src={frontmatter.ogImage} alt="image" class="mt-8 w-full" />
+          <Image src={frontmatter.ogImage} alt="hero image" width="1088" height="500" class="mt-8 w-full max-h-[500px] object-cover" />
         )
       }
     </div>

@@ -52,4 +52,12 @@ import nightwind from "nightwind/helper";
 <!-- Dark mode -->
 <script set:html={nightwind.init()} />
 
+<script>
+  document.addEventListener('astro:after-swap', () => {
+    if (localStorage.getItem('nightwind-mode') === 'dark') {
+      document.querySelector('html')?.classList.add('dark');
+    }
+  });
+</script>
+
 <ViewTransitions />

@@ -161,9 +161,6 @@ const og = () => ({
 
 // https://astro.build/config
 export default defineConfig({
-  experimental: {
-    viewTransitions: true,
-  },
   markdown: {
     drafts: true,
     shikiConfig: {

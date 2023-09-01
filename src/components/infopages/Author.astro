@@ -1,5 +1,6 @@
 ---
 import { getCollection } from "astro:content";
+import { Image } from "astro:assets";
 
 const meta = await getCollection("meta");
 
@@ -17,7 +18,8 @@ const { Content } = await hero?.render();
       class="grid grid-cols-1 gap-6 lg:grid-cols-2 lg:gap-24 items-center pt-12"
     >
       <div>
-        <img class="w-full" src="/b-w-profile.jpg" alt="" />
+        <Image class="w-full" src="/b-w-profile.jpg" width="496" height="496" alt="Darko's photo" decoding="async"
+        loading="lazy" />
       </div>
       <dl class="grid grid-cols-1 gap-6 md:grid-cols-2">
         <div class="md:col-span-2">
