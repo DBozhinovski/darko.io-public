@@ -295,6 +295,13 @@ declare module 'astro:content' {
   collection: "posts";
   data: InferEntrySchema<"posts">
 } & { render(): Render[".md"] };
+"the-jokers-in-a-deck-of-cards.md": {
+	id: "the-jokers-in-a-deck-of-cards.md";
+  slug: "the-jokers-in-a-deck-of-cards";
+  body: string;
+  collection: "posts";
+  data: InferEntrySchema<"posts">
+} & { render(): Render[".md"] };
 "weird-node-version-errors.md": {
 	id: "weird-node-version-errors.md";
   slug: "weird-node-version-errors";
