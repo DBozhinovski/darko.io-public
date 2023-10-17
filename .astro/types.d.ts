@@ -193,6 +193,13 @@ declare module 'astro:content' {
   collection: "drafts";
   data: any
 } & { render(): Render[".md"] };
+"the-jokers-in-a-deck-of-cards.md": {
+	id: "the-jokers-in-a-deck-of-cards.md";
+  slug: "the-jokers-in-a-deck-of-cards";
+  body: string;
+  collection: "drafts";
+  data: any
+} & { render(): Render[".md"] };
 };
 "meta": {
 "hero.md": {
@@ -291,13 +298,6 @@ declare module 'astro:content' {
 "the-case-for-agency-devex.md": {
 	id: "the-case-for-agency-devex.md";
   slug: "the-case-for-agency-devex";
-  body: string;
-  collection: "posts";
-  data: InferEntrySchema<"posts">
-} & { render(): Render[".md"] };
-"the-jokers-in-a-deck-of-cards.md": {
-	id: "the-jokers-in-a-deck-of-cards.md";
-  slug: "the-jokers-in-a-deck-of-cards";
   body: string;
   collection: "posts";
   data: InferEntrySchema<"posts">
