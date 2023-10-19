@@ -13,6 +13,7 @@ const { title, url, description, pubDate, author, image } = Astro.props;
         class="h-full w-full object-cover object-center group-hover:opacity-75"
         src={image}
         alt={title}
+        transition:name=`image-${image}`
       />
     </div>
 
@@ -22,10 +23,12 @@ const { title, url, description, pubDate, author, image } = Astro.props;
     >
     <h2
       id="featured-post"
-      class="mt-4 text-2xl font-bold tracking-tight text-black normal-case line-clamp-3">
+      class="mt-4 text-2xl font-bold tracking-tight text-black normal-case line-clamp-3"
+      transition:name=`title-${title}`
+      >
       {title}
     </h2>
-    <p class="mt-4 text-neutral-500 line-clamp-3">
+    <p class="mt-4 text-neutral-500 line-clamp-3" transition:name=`description-${title}`>
       {description}
     </p>
   </article>

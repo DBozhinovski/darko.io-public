@@ -11,30 +11,31 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@astrojs/mdx": "^1.0.0",
-    "@astrojs/preact": "^3.0.0",
+    "@astrojs/mdx": "^1.1.2",
+    "@astrojs/preact": "^3.0.1",
     "@astrojs/prism": "^3.0.0",
     "@astrojs/rss": "^3.0.0",
-    "@astrojs/sitemap": "^3.0.0",
-    "@astrojs/solid-js": "^3.0.0",
-    "@astrojs/tailwind": "^5.0.0",
-    "@resvg/resvg-js": "^2.4.1",
-    "astro": "^3.0.4",
-    "astro-webmanifest": "^0.6.0",
+    "@astrojs/sitemap": "^3.0.2",
+    "@astrojs/solid-js": "^3.0.2",
+    "@astrojs/tailwind": "^5.0.2",
+    "@resvg/resvg-js": "^2.5.0",
+    "astro": "^3.3.2",
+    "astro-webmanifest": "^1.0.0",
     "date-fns": "^2.30.0",
     "gray-matter": "^4.0.3",
     "mdast-util-to-string": "^4.0.0",
     "nightwind": "^1.1.13",
     "reading-time": "^1.5.0",
-    "satori": "^0.10.3",
+    "satori": "^0.10.9",
     "slug": "^8.2.3",
-    "solid-js": "^1.7.11",
-    "tailwindcss": "^3.3.3"
+    "solid-js": "^1.8.3",
+    "tailwindcss": "^3.3.3",
+    "tocbot": "^4.21.2"
   },
   "devDependencies": {
     "@astrolib/seo": "^0.6.0",
     "@tailwindcss/aspect-ratio": "^0.4.2",
     "@tailwindcss/forms": "^0.5.6",
-    "@tailwindcss/typography": "^0.5.9"
+    "@tailwindcss/typography": "^0.5.10"
   }
 }

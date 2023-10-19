@@ -5,6 +5,7 @@ const { frontmatter } = Astro.props;
 import { AstroSeo } from "@astrolib/seo";
 import { format } from "date-fns";
 import { Image } from 'astro:assets'
+
 ---
 
 <AstroSeo
@@ -43,19 +44,20 @@ import { Image } from 'astro:assets'
 />
 <BaseLayout>
   <section aria-labelledby="your-label" id="your-id">
+    <div id="js-toc"></div>
     <div class="max-w-7xl mx-auto px-8 py-12 lg:px-24">
       <div>
-        <h1 class="text-black text-3xl lg:text-6xl text-center">
+        <h1 class="text-black text-3xl lg:text-6xl text-center" transition:name=`title-${frontmatter.title}`>
           {frontmatter.title}
         </h1>
       </div>
       <div class="max-w-3xl mx-auto mt-24 text-center">
-        <p class="text-neutral-500 font-mono text-2xl mx-auto">
+        <p class="text-neutral-500 font-mono text-2xl mx-auto" transition:name=`description-${frontmatter.title}`>
           <em>{frontmatter.description}</em>
         </p>
         {
           frontmatter.pubDate && (
-            <div>
+            <div transition:animate="fade">
               <ol
                 role="list"
                 class="mt-8 divide-y divide-neutral-300/30 text-base tracking-tight"
@@ -124,12 +126,12 @@ import { Image } from 'astro:assets'
       </div>
       {
         frontmatter.ogImage && (
-          <Image src={frontmatter.ogImage} alt="hero image" width="1088" height="500" class="mt-8 w-full max-h-[500px] object-cover" />
+          <Image src={frontmatter.ogImage} alt="hero image" width="1088" height="500" class="mt-8 w-full max-h-[500px] object-cover" transition:name={`image-${frontmatter.ogImage}`} />
         )
       }
     </div>
   </section>
-  <section aria-labelledby="your-label" id="your-id">
+  <section aria-labelledby="" id="content" transition:animate="fade">
     <div class="max-w-7xl mx-auto px-8 pb-16 pt-2 lg:px-24">
       <div
         class="mx-auto hover:prose-a:text-black font-light lg:prose-xl prose prose-a:text-blue-500 prose-blockquote:border-l-black prose-blockquote:text-black prose-bloquote:text-5xl prose-headings:font-medium prose-headings:text-black prose-li:marker:text-black text-neutral-600 py-10 prose-pre:border prose-img:w-full"
@@ -140,3 +142,20 @@ import { Image } from 'astro:assets'
   </section>
   <!-- <CtaTwo /> -->
 </BaseLayout>
+
+<script>
+  import tocbot from 'tocbot';
+
+  tocbot.init({
+    // Where to render the table of contents.
+    tocSelector: '#js-toc',
+    // Where to grab the headings to build the table of contents.
+    contentSelector: '#content',
+    // Which headings to grab inside of the contentSelector element.
+    headingSelector: 'h1, h2, h3',
+    // For headings inside relative or absolute positioned containers within content.
+    hasInnerContainers: true,
+  });
+
+  tocbot.refresh();
+</script>
