@@ -35,8 +35,28 @@ But a chain of events happened that caused two important things: JavaScript got 
 
 Naturally, those that were into web development but still disliked JavaScript (which frankly, was often the default) stuck to the back-end. In effect, the classical web developer turned into what we nowadays think of as a back-end developer. This is, of course, simplified, and probably biased, but to me it feels like a good approximation of the evolution of the web developer role.
 
-That leaves us weirdos that liked both sides of the coin. I grew to love JavaScript and the Web Platform a lot, but I still liked doing back-end stuff.
+That leaves us weirdos that liked both sides of the coin. I grew to love JavaScript and the Web Platform a lot, but I still liked doing back-end stuff. Those lucky few of us that loved going back and forth the stack, came to be know as "full-stack developers".
+
+So naturally, when full-stack started being a role companies hired for, the job descriptions were far from standardized (in many ways, they still are). One company may have expected hard-core Ruby-on-Rails skills with a dash of front-end knowledge. Another would expect somebody that can write a Backbone.js application and a couple of REST routes in PHP. The job descriptions got broader with the advent of React and modern front-end frameworks in general. This was yet another evolution driven by the modernization of the Web Platform and the rise of JavaScript as a language. With more and more complexity thrown on top of an already complex system, naturally, web development got harder to get into and harder to master.
+
+Being spread across the stack got even harder as a result. Considering the speed at which the front-end changes, plus having to stay on top of your back-end skills, it truly requires a lot of effort to stay sharp and employable.
+
+As always, things got more complicated. Enter the cloud.
 
 ## And then, the "cloud" happened
 
-## The generalist role today
+Since everything has to be [wEb ScAle](https://www.reddit.com/r/ProgrammerHumor/comments/62rsd0/mongodb_is_web_scale/) these days, and herding servers isn't the most fun experience in the world, we invented this magical thing known as the [cloud](https://en.wikipedia.org/wiki/Cloud_computing). Now, I'm not a cloud skeptic. It has it's uses, but I don't feel like it's the silver bullet that it's often made out to be. It's a tool, and like any tool, it has it's upsides and it's drawbacks. But I digress.
+
+On top of having to know your way across the front and back-end, often there started being expectations of full-stack devs that they knew their way around the cloud. As a sidebar, we also evolved sysadmins to devops, SREs, and infra people, due to the advent of the cloud. So we do have specialized or intersectional roles that deal with the cloud. Regardless, the expectation, explicit or otherwise is often there - a full-stack person should know cloud stuff on top of an already diverse skillset.
+
+Personally, I never liked the idea of having to deal with the cloud. I can and like setting my apps and servers on bare-metal or on VPSs. Yes, it's not super-scalable, but the real question is: does it need to be cloud-scale? Quite often, investing in cloud stuff early in a product's lifecycle just adds complexity on top. But I digress again.
+
+My point is - the full-stack role and the expectations around it got even more complicated.
+
+## The generalist role today and tomorrow
+
+So, what does that all mean for the generalist fulls-stacker today? Depends on the company, but I feel like the expectation are broader than ever. With no sign of slowing down. While I feel like we need to redefine what the full-stack means really, one key thing is that it's a role that's constantly evolving. That constant evolution means that we, as generalists, have to remain flexible and open to learning new things. Personally, I feel like that's a good thing - you never really run the risk of getting bored with your "toys". We all have our limits and ranges of interests (I'm looking at you, cloud), but the flexibility and the ability to jump up and down the stack is what I think will remain key for the generalist of today and tomorrow.
+
+## The elephant in the room - time and focus shifts
+
+My previous points may paint an interesting picture, but we all suffer from one key constraint - time, and more importantly the time we dedicate to being focused on one single task.
