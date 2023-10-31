@@ -1,7 +1,7 @@
 ---
 author: Darko Bozhinovski
 title: "The Jokers in a Deck of cards - on the ever-evolving Generalist Role"
-pubDate: 2023-10-16
+pubDate: 2023-10-31
 tags: ["development", "roles", "generalist", "specialist"]
 description: "On the ever-evolving generalist/full-stack role and to what extent does it make sense to broaden your skillset."
 ogImage: "/nadejda-yanchuk-XlWLXlObh5I-unsplash.jpg"
