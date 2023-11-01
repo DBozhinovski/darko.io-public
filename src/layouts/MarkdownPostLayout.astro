@@ -106,13 +106,13 @@ import { Image } from 'astro:assets'
                       Category
                     </span>
                     <span
-                      class="font-mono text-neutral-500 divide-x divide-neutral-400 gap-3"
+                      class="font-mono text-neutral-500 gap-1 flex-wrap flex items-center justify-center"
                       aria-hidden="true"
                     >
                       {frontmatter?.tags?.map((tag) => (
                         <>
-                          <a class="pl-2 pr-2" href={`/tags/${tag}`}>
-                            {tag}
+                          <a class="px-1" href={`/tags/${tag}`}>
+                            #{tag}
                           </a>
                         </>
                       ))}
