@@ -315,6 +315,13 @@ declare module 'astro:content' {
   collection: "posts";
   data: InferEntrySchema<"posts">
 } & { render(): Render[".md"] };
+"wishlist-app-with-astro-and-solid.md": {
+	id: "wishlist-app-with-astro-and-solid.md";
+  slug: "wishlist-app-with-astro-and-solid";
+  body: string;
+  collection: "posts";
+  data: InferEntrySchema<"posts">
+} & { render(): Render[".md"] };
 "wp-as-an-api.md": {
 	id: "wp-as-an-api.md";
   slug: "wp-as-an-api";
