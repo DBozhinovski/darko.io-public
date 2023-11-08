@@ -23,6 +23,7 @@ module.exports = {
       },
       fontFamily: {
         sans: ["Poppins", ...defaultTheme.fontFamily.sans],
+        serif: ["Literata", ...defaultTheme.fontFamily.sans],
         mono: ["JetBrains Mono", ...defaultTheme.fontFamily.mono],
       },
     },
@@ -35,6 +36,9 @@ module.exports = {
           color: "#e5e7eb",
         },
         strong: {
+          color: "#e5e7eb",
+        },
+        h1: {
           color: "#e5e7eb",
         },
       },

@@ -47,12 +47,12 @@ import { Image } from 'astro:assets'
     <div id="js-toc"></div>
     <div class="max-w-7xl mx-auto px-8 py-12 lg:px-24">
       <div>
-        <h1 class="text-black text-3xl lg:text-6xl text-center" transition:name=`title-${frontmatter.title}`>
+        <h1 class="font-black text-black text-3xl lg:text-6xl text-center font-sans" transition:name=`title-${frontmatter.title}`>
           {frontmatter.title}
         </h1>
       </div>
       <div class="max-w-3xl mx-auto mt-24 text-center">
-        <p class="text-neutral-500 font-mono text-2xl mx-auto" transition:name=`description-${frontmatter.title}`>
+        <p class="text-neutral-500 font-serif text-2xl mx-auto" transition:name=`description-${frontmatter.title}`>
           <em>{frontmatter.description}</em>
         </p>
         {
@@ -72,7 +72,7 @@ import { Image } from 'astro:assets'
                         Date
                       </span>
                       <span
-                        class="font-mono text-neutral-500"
+                        class="font-serif text-neutral-800"
                         aria-hidden="true"
                       >
                         {frontmatter.pubDate &&
@@ -89,7 +89,7 @@ import { Image } from 'astro:assets'
                         Author
                       </span>
                       <span
-                        class="font-mono text-neutral-500"
+                        class="font-serif text-neutral-800"
                         aria-hidden="true"
                       >
                         {frontmatter.author}
@@ -106,7 +106,7 @@ import { Image } from 'astro:assets'
                       Category
                     </span>
                     <span
-                      class="font-mono text-neutral-500 gap-1 flex-wrap flex items-center justify-center"
+                      class="font-serif text-blue-500 underline gap-1 flex-wrap flex items-center justify-center"
                       aria-hidden="true"
                     >
                       {frontmatter?.tags?.map((tag) => (
@@ -134,7 +134,7 @@ import { Image } from 'astro:assets'
   <section aria-labelledby="" id="content" transition:animate="fade">
     <div class="max-w-7xl mx-auto px-8 pb-16 pt-2 lg:px-24">
       <div
-        class="mx-auto hover:prose-a:text-black font-light lg:prose-xl prose prose-a:text-blue-500 prose-blockquote:border-l-black prose-blockquote:text-black prose-bloquote:text-5xl prose-headings:font-medium prose-headings:text-black prose-li:marker:text-black text-neutral-600 py-10 prose-pre:border prose-img:w-full"
+        class="mx-auto hover:prose-a:text-black lg:prose-xl prose prose-a:text-blue-500 prose-blockquote:border-l-black prose-blockquote:text-black prose-bloquote:text-5xl prose-headings:font-medium prose-headings:text-black prose-li:marker:text-black text-neutral-600 py-10 prose-pre:border prose-img:w-full font-serif"
       >
         <slot />
       </div>

@@ -8,6 +8,7 @@ import { Resvg } from "@resvg/resvg-js";
 import satori from "satori";
 import fs from "node:fs";
 import parseFrontmatter from "gray-matter";
+import tokyoNightStorm from "./tokyo-night-storm.json";
 
 const render = (title) => ({
   type: "div",
@@ -164,13 +165,13 @@ export default defineConfig({
   markdown: {
     drafts: true,
     shikiConfig: {
-      theme: "css-variables",
+      wrap: true,
+      theme: {
+        name: "tokyo-night-storm",
+        type: "dark",
+        settings: tokyoNightStorm.tokenColors,
+      },
     },
-  },
-  shikiConfig: {
-    wrap: true,
-    skipInline: false,
-    drafts: true,
   },
   site: "https://darko.io",
   integrations: [
