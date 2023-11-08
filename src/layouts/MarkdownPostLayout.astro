@@ -7,7 +7,7 @@ import { format } from "date-fns";
 import { Image } from 'astro:assets'
 import readingTime from "reading-time";
 
-const stats = readingTime(body);
+const stats = body ? readingTime(body) : {};
 ---
 
 <AstroSeo
@@ -85,7 +85,7 @@ const stats = readingTime(body);
                       </span>
                     </>
                   </li>
-                  <li
+                 { body && <li
                     class="flex justify-between flex-col md:flex-row py-3"
                     aria-label="Intro to Figma on page 15"
                   >
@@ -108,7 +108,7 @@ const stats = readingTime(body);
                       </span>
                     </>
                   </li>
-                </>
+                </>}
                 <li
                   class="flex justify-between flex-col md:flex-row py-3"
                   aria-label="Setting up your first artboard on page 20"
