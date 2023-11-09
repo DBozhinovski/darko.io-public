@@ -2,10 +2,9 @@
 author: Darko Bozhinovski
 title: "Astro.js and WordPress as an API"
 pubDate: 2022-12-27
-tags: ['astro', 'wordpress', 'headless cms']
-description:
-  'Using WordPress as a headless CMS and an API via Astro.js. Exactly as cool as it sounds.'
-ogImage: '/evgeni-tcherkasski-BfBhwJ4qafo-unsplash.webp'
+tags: ["astro", "wordpress", "headless cms"]
+description: "Using WordPress as a headless CMS and an API via Astro.js. Exactly as cool as it sounds."
+ogImage: "/evgeni-tcherkasski-BfBhwJ4qafo-unsplash.webp"
 ---
 
 As a big fan of [JAMStack](https://jamstack.org), I'm always trying to find a way to ~shoehorn~ use it in my projects. Of course, it doesn't make sense for every project out there, but you'd find it very hard to persuade me that it won't work for ~80% (source: me) of what we're doing as web developers nowadays.
@@ -49,10 +48,9 @@ To replicate the setup of the app, we'll need the following:
 Using the official [WordPress docker image](https://hub.docker.com/_/wordpress/) (with the copied example using docker compose), we have the following config:
 
 ```yaml
-version: '3.1'
+version: "3.1"
 
 services:
-
   wordpress:
     image: wordpress
     restart: always
@@ -73,23 +71,22 @@ services:
       MYSQL_DATABASE: exampledb
       MYSQL_USER: exampleuser
       MYSQL_PASSWORD: examplepass
-      MYSQL_RANDOM_ROOT_PASSWORD: '1'
+      MYSQL_RANDOM_ROOT_PASSWORD: "1"
     volumes:
       - db:/var/lib/mysql
 
 volumes:
   wordpress:
   db:
-
 ```
 
-The only change I made from the original example is the port mapping; the `stack.yml` config in the above page maps port 8080 to 80, while I'm mapping 8081 to 80. 
+The only change I made from the original example is the port mapping; the `stack.yml` config in the above page maps port 8080 to 80, while I'm mapping 8081 to 80.
 
 Running `docker-compose -f stack.yml up` gives us a WordPress instance running on port 8081. To finalize the installation, you'll also need to do the initial setup by opening http://localhost:8081 in your browser and following the instructions on the screen.
 
 ### 0.2. Add some plugins in the WP admin
 
-Once everything is set up, navigate to https://localhost:8081/wp-admin, and log in using the credentials you chose in step [0.1](#01-wordpress-via-docker). 
+Once everything is set up, navigate to https://localhost:8081/wp-admin, and log in using the credentials you chose in step [0.1](#01-wordpress-via-docker).
 
 Once logged in, click on `Plugins` in the sidebar, followed by a click on `Add New`.
 
@@ -103,7 +100,10 @@ Once logged in, click on `Plugins` in the sidebar, followed by a click on `Add N
   class="embed-responsive embed-responsive-16by9 relative w-full overflow-hidden"
 >
   <figure>
-    <video src="/wp-plugins-install.webm" controls>
+    <video controls>
+      <source src="/wp-plugins-install.webm" />
+      <source src="/wp-plugins-install.mp4" />
+    </video>
   </figure>
   <section>The WordPress plugins we need</section>
 </div>
@@ -124,13 +124,15 @@ Generate some posts and products using the config inputs on the page (there are 
   class="embed-responsive embed-responsive-16by9 relative w-full overflow-hidden"
 >
   <figure>
-    <video src="/wp-fakerpress.webm" controls>
+    <video controls>
+      <source src="/wp-fakerpress.webm" />
+      <source src="/wp-fakerpress.mp4" />
+    </video>
   </figure>
   <section>Fakerpress usage</section>
 </div>
 
 ---
-
 
 Let's move on to how we can fetch this data from the outside.
 
@@ -145,18 +147,18 @@ So, let's review everything we need to fetch the data relevant to the problem st
 We installed WPGraphQL above. So, we'll use graphql to fetch the posts we need:
 
 ```graphql
-query fetchPosts($length:Int) {
-  posts ( # fetch $length posts, order them by DATE in a DESCending order
-    first: $length, 
-    where:{ orderby: { field: DATE, order: DESC } }
-  ) {
-    nodes { # from every record get the following fields:
-      id 
+query fetchPosts($length: Int) {
+  posts(first: $length, where: { orderby: { field: DATE, order: DESC } }) {
+    # fetch $length posts, order them by DATE in a DESCending order
+    nodes {
+      # from every record get the following fields:
+      id
       title
       date
       slug
       excerpt
-      author { # some fields are read from other tables, fetch their relevant data too:
+      author {
+        # some fields are read from other tables, fetch their relevant data too:
         node {
           name
           avatar {
@@ -209,20 +211,19 @@ const api = new WooCommerceRestApi({
   consumerKey: "ck_****************************", // Your WooCommerce key, see below
   consumerSecret: "cs_**************************", // Your WooCommerce secret, see below
   version: "wc/v3",
-  queryStringAuth: false
+  queryStringAuth: false,
 });
 ```
 
 ---
 
-__Security note:__ Avoid embedding keys and secrets directly into code. Use env variables instead.
+**Security note:** Avoid embedding keys and secrets directly into code. Use env variables instead.
 
 ---
 
 ### 2.1. Consumer key and secret
 
-To be able to use the WooCommerce API, we need to obtain the API key and secret from our admin panel. 
-
+To be able to use the WooCommerce API, we need to obtain the API key and secret from our admin panel.
 
 ---
 
@@ -230,18 +231,21 @@ To be able to use the WooCommerce API, we need to obtain the API key and secret 
   class="embed-responsive embed-responsive-16by9 relative w-full overflow-hidden"
 >
   <figure>
-    <video src="/wp-woocommerce-api-keys.webm" controls>
+    <video controls>
+      <source src="/wp-woocommerce-api-keys.webm" />
+      <source src="/wp-woocommerce-api-keys.mp4" />
+    </video>
   </figure>
   <section>Generating WooCommerce API keys</section>
 </div>
 
 ---
 
-
 Navigate to https://localhost:8081/wp-admin one more, hover over `WooCommerce` in the sidebar, and click on `Settings` from the menu. Next, go to the `Advanced` tab, click on `REST API` and finally click on the `Add key` button. Give the new key / secret combo a memorable name, and finally, click on the `Generate API key` button.
 
 ---
-__Tip:__ To write to the WooCommerce API, you'll also need to set permissions to Read/Write in the `Permissions` dropdown menu.
+
+**Tip:** To write to the WooCommerce API, you'll also need to set permissions to Read/Write in the `Permissions` dropdown menu.
 
 ---
 
@@ -250,12 +254,12 @@ Finally, for simplicity, we can create a helper function that makes fetching Woo
 ```ts
 // Using `api` as defined in the code snippet above
 export async function getProducts({ perPage = 20 }: { perPage: number }) {
-  const products = await api.get('products', {
+  const products = await api.get("products", {
     per_page: perPage,
   });
 
-  console.log("Total of pages:", products.headers['x-wp-totalpages']);
-  console.log("Total of items:", products.headers['x-wp-total']);
+  console.log("Total of pages:", products.headers["x-wp-totalpages"]);
+  console.log("Total of items:", products.headers["x-wp-total"]);
 
   return products.data;
 }
@@ -317,6 +321,6 @@ const postContents = await wpPosts.json();
 
 WordPress has perfectly good APIs for most of its core offerings. Most notably, there are APIs for both WordPress and WooCommerce. So, if you are "stuck" with WordPress, you can always use it that way. It sure beats "throwing away the baby with the bathwater" and re-writing an entire system.
 
-Using center-stack solutions such as Astro (or any JAMStack solutions, really) makes for an easy and clear upgrade/migration path for these scenarios. 
+Using center-stack solutions such as Astro (or any JAMStack solutions, really) makes for an easy and clear upgrade/migration path for these scenarios.
 
 For a working example, have a look at the demo app at https://github.com/DBozhinovski/wp-as-an-api.

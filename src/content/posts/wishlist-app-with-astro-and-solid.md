@@ -137,7 +137,10 @@ We need two columns here: Title and URL. We have an extra column we can remove f
   class="embed-responsive embed-responsive-16by9 relative w-full overflow-hidden"
 >
   <figure>
-    <video src="/br-table-creation.webm" controls>
+    <video controls>
+      <source src="/br-table-creation.webm" />
+      <source src="/br-table-creation.mp4" />
+    </video>
   </figure>
   <section>Columns added.</section>
 </div>
@@ -160,7 +163,10 @@ Once you set the permissions to your liking, click on the three dots next to the
   class="embed-responsive embed-responsive-16by9 relative w-full overflow-hidden"
 >
   <figure>
-    <video src="/br-token-creation.webm" controls>
+    <video controls>
+      <source src="/br-token-creation.webm" />
+      <source src="/br-token-creation.mp4" />
+    </video>
   </figure>
   <section>Token creation and permissions</section>
 </div>
