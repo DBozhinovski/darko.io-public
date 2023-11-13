@@ -10,9 +10,43 @@ export async function getStaticPaths() {
 }
 
 const { entry } = Astro.props;
-const { Content } = await entry.render();
+const { Content  } = await entry.render();
 
 ---
 <MarkdownPostLayout frontmatter={entry.data} body={entry.body}>
   <Content />
 </MarkdownPostLayout>
+
+<style is:global>
+  .toc-link-h2::before {
+    display: none;
+  }
+
+  nav.toc::before {
+    content: 'Table of Contents';
+    @apply text-base font-bold block pb-2 text-center;
+  }
+  nav.toc {
+    @apply fixed bottom-[56px] right-0 2xl:right-[40px] 2xl:bottom-0 overflow-y-hidden m-0 p-4 border-dashed border-neutral-500 border-b-4 2xl:border-b-0 border-t-4 2xl:border-t-0 border-l-4 2xl:border-l-0 transition-all hidden 2xl:block bg-neutral-100 2xl:bg-white;
+    max-width: 320px;
+    /* right: 20px; */
+    opacity: 0;
+  }
+
+  nav.toc ol {
+    @apply text-sm font-sans no-underline m-0 p-0 ;
+  }
+
+  nav.toc li {
+    @apply list-none;
+  }
+
+  nav.toc a {
+    @apply font-light no-underline;
+  }
+
+  button.toc-button {
+    @apply fixed bottom-0 right-0 m-0 p-4 border-dashed border-neutral-500 border-t-4 border-l-4 transition-all 2xl:hidden hover:bg-neutral-100;
+    opacity: 0.8;
+  }
+</style>

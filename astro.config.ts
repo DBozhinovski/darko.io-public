@@ -172,6 +172,14 @@ export default defineConfig({
         settings: tokyoNightStorm.tokenColors,
       },
     },
+    rehypePlugins: [
+      "rehype-slug",
+      ["rehype-autolink-headings", { behavior: "append" }],
+      [
+        "@jsdevtools/rehype-toc",
+        { headings: ["h1", "h2"], position: "afterend" },
+      ],
+    ],
   },
   site: "https://darko.io",
   integrations: [

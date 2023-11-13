@@ -90,6 +90,7 @@ We already have an index page from our initial setup, but let's make it more int
 ```jsx
 
 ---
+
 import Base from '../layouts/Base.astro'; // import the layout we just created
 
 ---
@@ -328,7 +329,7 @@ Next up - let's see how we can make this app a bit more secure, plus explore som
 
 ---
 
-## Alternative approaches for a wishlist app using Astro
+## Alternative approaches
 
 For the security purists out there -- yes, I agree that keys should not be public. I made an exception here because I wanted to keep this client-side only, for the sake of having an easy way to refresh the list without resorting to, e.g., lambdas. That said, let's see how we'd approach this if security was a concern.
 

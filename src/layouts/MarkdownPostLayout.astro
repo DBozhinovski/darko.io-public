@@ -150,11 +150,89 @@ const stats = body ? readingTime(body) : {};
   <section aria-labelledby="" id="content" transition:animate="fade">
     <div class="max-w-7xl mx-auto px-8 pb-16 pt-2 lg:px-24">
       <div
-        class="mx-auto hover:prose-a:text-black lg:prose-xl prose prose-a:text-blue-500 prose-blockquote:border-l-black prose-blockquote:text-black prose-bloquote:text-5xl prose-headings:font-medium prose-headings:text-black prose-li:marker:text-black text-neutral-600 py-10 prose-pre:border prose-img:w-full font-serif"
+        class="mx-auto hover:prose-a:text-black lg:prose-xl prose prose-a:text-blue-500 prose-blockquote:border-l-black prose-blockquote:text-black prose-bloquote:text-5xl prose-headings:font-medium prose-headings:text-black prose-li:marker:text-black text-neutral-600 py-10 prose-pre:border prose-img:w-full font-serif relative"
       >
         <slot />
+        <button class="toc-button">
+          <svg width="24" height="24" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+              <path fill="currentColor" d="M4 6h18v2H4zm0 6h18v2H4zm0 6h18v2H4zm0 6h18v2H4zM26 6h2v2h-2zm0 6h2v2h-2zm0 6h2v2h-2zm0 6h2v2h-2z"/>
+          </svg>  
+        </button>
       </div>
     </div>
   </section>
   <!-- <CtaTwo /> -->
+
 </BaseLayout>
+
+<script>
+  let observer;
+  let headingsObserver;
+
+  function toggleToC() {
+    const toc = document.querySelector('.toc') as HTMLElement;
+    if (toc) {
+      if (toc.style.opacity === '1') {
+        toc.style.display = 'none';
+        toc.style.opacity = '0';
+      } else {
+        toc.style.display = 'block';
+        toc.style.opacity = '1';
+      }
+    }
+  }
+
+  function bindToggleToC () {
+    document.querySelector('.toc-button')?.removeEventListener('click', toggleToC);
+    document.querySelector('.toc-button')?.addEventListener('click', toggleToC);
+  }
+
+  function observeToC() {
+    observer?.unobserve(document?.querySelector("#content > div"));
+
+    observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        const toc = document.querySelector('.toc') as HTMLElement;
+        if (toc) {
+          if (entry.isIntersecting) {
+            console.log('show')
+            toc.style.opacity = '1';
+          } else {
+            console.log('hide' )
+            toc.style.opacity = '0';
+          }
+        }
+      });
+    });
+    
+    observer.observe(document?.querySelector("#content > div"));
+  }
+
+  function observeHeadings () {
+    headingsObserver?.unobserve(document?.querySelectorAll("h1, h2"));
+
+    headingsObserver = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        console.log(entry);
+        console.log(entry.isIntersecting);
+      });
+    })
+
+    headingsObserver.observe(document?.querySelectorAll("h1, h2"));
+  }
+
+  document.addEventListener('astro:after-swap', () => {
+    console.log('refreshing observer');
+    observeToC();
+    bindToggleToC();
+    observeHeadings();
+  });
+
+  document.addEventListener('astro:page-load', () => {
+    console.log('refreshing observer');
+    observeToC();
+    bindToggleToC();
+    observeHeadings();
+  }, { once: true });
+
+</script>
