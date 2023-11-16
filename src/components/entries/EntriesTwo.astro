@@ -5,7 +5,7 @@ const { title, url, description, pubDate, author, image } = Astro.props;
 <a href={url} title={title} class="md:px-6">
   <article class="mx-auto w-full lg:mx-0">
     <div
-      class="aspect-[16/9] aspect-w-1 w-full overflow-hidden md:aspect-h-3 md:aspect-w-2">
+      class="aspect-[16/9] aspect-w-1 w-full overflow-hidden md:aspect-h-2 md:aspect-w-2">
       <img
         src={image}
         alt={title}
@@ -19,8 +19,8 @@ const { title, url, description, pubDate, author, image } = Astro.props;
     >
     <h2
       id="featured-post"
-      class="mt-4 text-2xl font-bold tracking-tight text-black normal-case line-clamp-3">
-      {description}
+      class="mt-4 text-2xl font-bold tracking-tight text-black normal-case">
+      {title}
     </h2>
   </article>
 </a>

@@ -6,8 +6,13 @@ import { AstroSeo } from "@astrolib/seo";
 import { format } from "date-fns";
 import { Image } from 'astro:assets'
 import readingTime from "reading-time";
+import { findRelated } from "../utils/classifier";
+import { reference } from "astro:content";
+import EntriesTwo from "../components/entries/EntriesTwo.astro";
 
 const stats = body ? readingTime(body) : {};
+
+const related = frontmatter.tags && findRelated(frontmatter.title, frontmatter.tags, frontmatter.description, 4) || [];
 ---
 
 <AstroSeo
@@ -158,6 +163,28 @@ const stats = body ? readingTime(body) : {};
               <path fill="currentColor" d="M4 6h18v2H4zm0 6h18v2H4zm0 6h18v2H4zm0 6h18v2H4zM26 6h2v2h-2zm0 6h2v2h-2zm0 6h2v2h-2zm0 6h2v2h-2z"/>
           </svg>  
         </button>
+        { related.length > 0 && 
+          <div class="mt-28">
+          <h3 class="italic mb-0 underline">Related reads:</h3>
+          <div
+        class="not-prose mb-20 mx-auto grid grid-cols-1 sm:grid-cols-2 gap-x-3 md:gap-x-0 gap-y-12 sm:gap-y-16 mt-12 lg:grid-cols-3 lg:divide-x md:-mx-6">
+        {
+          related.slice(1, 4)
+            .map((post) => (
+              <EntriesTwo
+                url={"/posts/" + post.slug}
+                title={post.data.title}
+                description={post.data.description}
+                alt={post.data.title}
+                pubDate={post.data.pubDate.toString().slice(0, 10)}
+                author={post.data.author}
+                image={post.data.ogImage}
+              />
+            ))
+        }
+      </div>
+              
+        </div>}
       </div>
     </div>
   </section>
