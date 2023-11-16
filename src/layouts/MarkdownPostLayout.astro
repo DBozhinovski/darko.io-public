@@ -47,7 +47,7 @@ const stats = body ? readingTime(body) : {};
 <BaseLayout>
   <section aria-labelledby="your-label" id="your-id">
     <div id="js-toc"></div>
-    <div class="max-w-7xl mx-auto px-8 py-12 lg:px-24">
+    <div class="max-w-7xl mx-auto px-8 py-12 lg:px-24 overflow-x-hidden">
       <div>
         <h1 class="font-black text-black text-3xl lg:text-6xl text-center font-sans" transition:name=`title-${frontmatter.title}`>
           {frontmatter.title}

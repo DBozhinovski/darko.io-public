@@ -1,11 +1,10 @@
 ---
 author: Darko Bozhinovski
-title: 'All you need to know about serverless functions and the edge'
+title: "All you need to know about serverless functions and the edge"
 pubDate: 2022-11-25
-tags: ['serverless', 'lambda', 'edge computing', 'serverless functions']
-description:
-  'As much of a misnomer `serverless` is, it is pretty useful, especially when the actual computing happens close to you.'
-ogImage: '/taylor-vick-M5tzZtFCOfs-unsplash.jpg'
+tags: ["serverless", "lambda", "edge computing", "serverless functions"]
+description: "As much of a misnomer `serverless` is, it is pretty useful, especially when the actual computing happens close to you."
+ogImage: "/taylor-vick-M5tzZtFCOfs-unsplash.jpg"
 ---
 
 I'm old enough to remember that we used to use telephone landlines to connect to the Internet. Hearing that modem connecting sound still brings a smile and a semi-nostalgic feeling for the good ol' Internet. Back then, it was a simple place. Having a Geocities page was all the rage. So naturally, that was one of my first forays into trying to host something on the web. One of the cornerstones of that lovely old Internet, however, was the fact that it was slow. Loading an image could take minutes. Gifs especially.
@@ -22,7 +21,7 @@ The problem is not all of the planet has progressed with the internet speed at t
 
 ---
 
-__Concept no. 1: Geography, internet speed, and availability are real problems. Not all of us live in the same spot, and not all have the same Internet access. Executing geographically closer to the user is a good solution to the problem. This approach is also known as "edge computing".__ 
+**Concept no. 1: Geography, internet speed, and availability are real problems. Not all of us live in the same spot, and not all have the same Internet access. Executing geographically closer to the user is a good solution to the problem. This approach is also known as "edge computing".**
 
 ---
 
@@ -30,22 +29,22 @@ __Concept no. 1: Geography, internet speed, and availability are real problems. 
 
 ![no-cloud](/no-cloud.jpg)
 
-Just to get it out of my system - if we ever named something wrong, that would be "serverless computing". Just as (pictured above) we did 
+Just to get it out of my system - if we ever named something wrong, that would be "serverless computing". Just as (pictured above) we did
 a horrible job as an industry naming and explaining the cloud, somehow we did a measurably worse job with serverless. Yes, there are servers involved. Perhaps not in the classical sense, as your run-of-the-mill API or CMS. But, servers are still very much in the picture. With that out of my system, why do we even want serverless computing? For one, compared to a classical API (let's take REST as an example), we'd have a server that runs at all times, expecting connections. Real world applications rarely have an equal load / demand throughout the day, so it certainly makes sense to "spin down" our resources to cut costs and be more environmentally aware. I'll defer to [wikipedia's wisdom](https://en.wikipedia.org/wiki/Serverless_computing) here, and quote their definiton:
 
 > Serverless computing is a cloud computing execution model in which the cloud provider allocates machine resources on demand, taking care of the servers on behalf of their customers. "Serverless" is a misnomer in the sense that servers are still used by cloud service providers to execute code for developers. However, developers of serverless applications are not concerned with capacity planning, configuration, management, maintenance, fault tolerance, or scaling of containers, VMs, or physical servers. Serverless computing does not hold resources in volatile memory; computing is rather done in short bursts with the results persisted to storage. When an app is not in use, there are no computing resources allocated to the app. Pricing is based on the actual amount of resources consumed by an application.[1] It can be a form of utility computing.
 
-By this definition, the benefits of running serverless functions opposed to more classical approaches are obvious. In theory, it is a cheaper and more efficient way of using resources. The basic building block (a function) is a simple execution unit that runs when a request reaches the "serverless" provider. Simple is easier to build. Not easier to debug in every case, since most cloud providers give you very specific tools for logging and taking a peek at what's going on inside the serverless thing (container hosted or VM hosted etc.). Those tools aren't always (in my experience at least), but the model is pretty new, so the DX will likely improve over time. 
+By this definition, the benefits of running serverless functions opposed to more classical approaches are obvious. In theory, it is a cheaper and more efficient way of using resources. The basic building block (a function) is a simple execution unit that runs when a request reaches the "serverless" provider. Simple is easier to build. Not easier to debug in every case, since most cloud providers give you very specific tools for logging and taking a peek at what's going on inside the serverless thing (container hosted or VM hosted etc.). Those tools aren't always (in my experience at least), but the model is pretty new, so the DX will likely improve over time.
 
 ---
 
-__Concept no. 2: Classical, always up-and-running APIs don't make sense in every case. It's cheaper and more resource-efficient to run code on demand. It also makes senses from an environmental perspective, as less power used often equals less polution. This computing model, when we're running a function on demand is also known as serverless computing.__ 
+**Concept no. 2: Classical, always up-and-running APIs don't make sense in every case. It's cheaper and more resource-efficient to run code on demand. It also makes senses from an environmental perspective, as less power used often equals less polution. This computing model, when we're running a function on demand is also known as serverless computing.**
 
 ---
 
 ## Serverless computing on the edge
 
-In many ways, these two concepts are a natural fit. Running resource-aware functions geographically closer to the users combines the benefits of both definitions above. It's cheaper, more environmentally friendly while the users get the benefit of fast responses, since the execution happens in the geographically closest place of execution. 
+In many ways, these two concepts are a natural fit. Running resource-aware functions geographically closer to the users combines the benefits of both definitions above. It's cheaper, more environmentally friendly while the users get the benefit of fast responses, since the execution happens in the geographically closest place of execution.
 
 I'll take a real-world scenario I recently had to work on as an example:
 
@@ -57,6 +56,4 @@ I still would recommend going fully serverless for only some scenarios out there
 
 Combining edge computing with serverless computation is a natural fit for many scenarios. However, classical APIs and monolithic solutions are still my go-to for the most part. Still, some problems benefit heavily from being solved in a distributed fashion - resource-aware and closer to the users.
 
-
 _Note:_ This post was written as part of my [DX mentorship](https://www.dxmentorship.com).
-
