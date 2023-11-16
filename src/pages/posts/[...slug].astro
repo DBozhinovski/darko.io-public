@@ -45,6 +45,10 @@ const { Content  } = await entry.render();
     @apply font-light no-underline;
   }
 
+  nav.toc a.active {
+    @apply font-semibold underline;
+  }
+
   button.toc-button {
     @apply fixed bottom-0 right-0 m-0 p-4 border-dashed border-neutral-500 border-t-4 border-l-4 transition-all 2xl:hidden hover:bg-neutral-100;
     opacity: 0.8;

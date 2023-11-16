@@ -165,7 +165,8 @@ const stats = body ? readingTime(body) : {};
 
 </BaseLayout>
 
-<script>
+<script>import toc from "@jsdevtools/rehype-toc";
+
   let observer;
   let headingsObserver;
 
@@ -209,16 +210,24 @@ const stats = body ? readingTime(body) : {};
   }
 
   function observeHeadings () {
-    headingsObserver?.unobserve(document?.querySelectorAll("h1, h2"));
+    const headings = document.querySelectorAll("h1, h2");
 
-    headingsObserver = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        console.log(entry);
-        console.log(entry.isIntersecting);
+    headings.forEach(heading => {
+      const hObserver = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            console.log('Adding active to', heading.id)
+            document.querySelectorAll('.toc a').forEach(link => {
+              link.classList.remove('active');
+            });
+            const tocLink = document.querySelector(`.toc a[href="#${heading.id}"]`) as HTMLElement;
+            tocLink?.classList.add('active');
+          }
+        });
       });
-    })
 
-    headingsObserver.observe(document?.querySelectorAll("h1, h2"));
+      hObserver.observe(heading);
+    });
   }
 
   document.addEventListener('astro:after-swap', () => {
@@ -226,6 +235,7 @@ const stats = body ? readingTime(body) : {};
     observeToC();
     bindToggleToC();
     observeHeadings();
+    // observeToCHeadings();
   });
 
   document.addEventListener('astro:page-load', () => {
@@ -233,6 +243,7 @@ const stats = body ? readingTime(body) : {};
     observeToC();
     bindToggleToC();
     observeHeadings();
+    // observeToCHeadings();
   }, { once: true });
 
 </script>

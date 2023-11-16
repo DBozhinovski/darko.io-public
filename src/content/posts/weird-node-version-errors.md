@@ -1,12 +1,13 @@
 ---
 author: Darko Bozhinovski
-title: 'Weird node version errors and how to solve them'
+title: "Weird node version errors and how to solve them"
 pubDate: 2023-02-01
-tags: ['node', 'error', 'shorts']
-description:
-  'The woes of using two computers for development. On node versions and unfriendly errors.'
-ogImage: '/etienne-girardet-OA0qcP6GOw0-unsplash.jpg'
+tags: ["node", "error", "shorts"]
+description: "The woes of using two computers for development. On node versions and unfriendly errors."
+ogImage: "/etienne-girardet-OA0qcP6GOw0-unsplash.jpg"
 ---
+
+## Background - the two computers
 
 I use two computers for work - a desktop that doubles as a gaming machine and a laptop that spends most of its hours in my office. Until recently, I believed both devices had the exact same setup, which allowed me to work in (what I thought was) the same environment.
 
@@ -42,5 +43,3 @@ A bit of sleuthing later made me conclude that the default node version I have o
 > If you hit an ERR_OSSL_EVP_UNSUPPORTED error in your application with Node.js 17, it’s likely that your application or a module you’re using is attempting to use an algorithm or key size which is no longer allowed by default with OpenSSL 3.0. A command-line option, --openssl-legacy-provider, has been added to revert to the legacy provider as a temporary workaround for these tightened restrictions.
 
 So, as a takeaway - when you hit an error like `'ERR_OSSL_EVP_UNSUPPORTED'` - either change your Node version to an older one or, alternatively, use the `--openssl-legacy-provider` flag when trying to use the Node CLI.
-
-

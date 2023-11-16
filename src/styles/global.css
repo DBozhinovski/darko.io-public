@@ -23,6 +23,10 @@
   --astro-code-token-punctuation: #000000;
   --astro-code-token-link: #000000;
 }
+
+html {
+  scroll-behavior: smooth;
+}
 /* Transition on the summary tag by faking the bottom maring*/
 
 /* .dark a {

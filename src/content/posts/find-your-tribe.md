@@ -9,19 +9,6 @@ ogImage: "/william-white-TZCppMjaOHU-unsplash.jpg"
 
 <i>This article is inspired by a panel I participated in at WeAreDevelopers World Congress 2023. [A buffalo stick take](https://jason.energy/effective-devrel-buffalo-stick/) on a panel, if you will.</i>
 
-- [The selfish angle](#the-selfish-angle)
-  - [Having a network (of support)](#having-a-network-of-support)
-    - [Learning from others (and getting info in general)](#learning-from-others-and-getting-info-in-general)
-    - [Sharing your knowledge (and work)](#sharing-your-knowledge-and-work)
-- [The other side of the coin](#the-other-side-of-the-coin)
-  - [The collective consciousness](#the-collective-consciousness)
-  - [The ripple effect](#the-ripple-effect)
-  - [Giving back – the circle of (tech) life](#giving-back--the-circle-of-tech-life)
-  - [The synergy](#the-synergy)
-- [Experiences from the field](#experiences-from-the-field)
-- [Wrapping up](#wrapping-up)
-  - [PS. A call to action](#ps-a-call-to-action)
-
 Without getting too heavily into stereotypes, we developers tend towards being on the "wallflower" side of the spectrum. I'm no exception, even though [I'm actively taking](https://beerjs.mk) [part in some](https://codepub.dev) [not-so-introverted](https://deved.mk) [activities](https://www.youtube.com/channel/UCtCyVHiEXMOHaVGbnKuU4VA). That's all good and well, but we are naturally social beings. Especially when it comes to problem-solving, learning, and sharing knowledge, it stands to reason that by collaborating with others, we can achieve more than we can on our own. Let's dive into why it's important to be part of a community as a developer.
 
 ## The selfish angle

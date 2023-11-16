@@ -20,23 +20,6 @@ One such project is an interesting case. A small business based on WordPress, wh
 
 While there are hundreds of options out there that would easily fit the bill, I went with Astro. I like it; it keeps things simple but doesn't necessarily limit you. If we imagine a spectrum between a website and a web app, Astro neatly fits in the middle, with the potential to go in any direction. So, onwards with the plan.
 
----
-
-**Table of Contents**
-
-- [0. Setup](#0-setup)
-  - [0.1. WordPress via Docker](#01-wordpress-via-docker)
-  - [0.2. Add some plugins in the WP admin](#02-add-some-plugins-in-the-wp-admin)
-  - [0.3. Generate some dummy data for posts and products](#03-generate-some-dummy-data-for-posts-and-products)
-- [1. WordPress can be an treated as an API](#1-wordpress-can-be-an-treated-as-an-api)
-  - [1.1. We need to read blog posts](#11-we-need-to-read-blog-posts)
-- [2. WooCommerce also has an API (but a client library is simpler)](#2-woocommerce-also-has-an-api-but-a-client-library-is-simpler)
-  - [2.1. Consumer key and secret](#21-consumer-key-and-secret)
-- [3. Consuming data via Astro](#3-consuming-data-via-astro)
-- [Takeaway](#takeaway)
-
----
-
 For our demo and as a starting point, we'll cover two things: fetching posts via graphql and fetching woocommerce products via a client library.
 
 ## 0. Setup
