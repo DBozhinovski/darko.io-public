@@ -308,6 +308,13 @@ declare module 'astro:content' {
   collection: "posts";
   data: InferEntrySchema<"posts">
 } & { render(): Render[".md"] };
+"web-standards-neat-html-tricks-you-probably-havent-heard-about.md": {
+	id: "web-standards-neat-html-tricks-you-probably-havent-heard-about.md";
+  slug: "web-standards-neat-html-tricks-you-probably-havent-heard-about";
+  body: string;
+  collection: "posts";
+  data: InferEntrySchema<"posts">
+} & { render(): Render[".md"] };
 "weird-node-version-errors.md": {
 	id: "weird-node-version-errors.md";
   slug: "weird-node-version-errors";
