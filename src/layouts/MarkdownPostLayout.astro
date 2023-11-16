@@ -172,6 +172,7 @@ const stats = body ? readingTime(body) : {};
 
   function toggleToC() {
     const toc = document.querySelector('.toc') as HTMLElement;
+
     if (toc) {
       if (toc.style.opacity === '1') {
         toc.style.display = 'none';
@@ -193,7 +194,11 @@ const stats = body ? readingTime(body) : {};
 
     observer = new IntersectionObserver(entries => {
       entries.forEach(entry => {
+        const vw = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0)
         const toc = document.querySelector('.toc') as HTMLElement;
+        if (vw < 1536) {
+          return;
+        }
         if (toc) {
           if (entry.isIntersecting) {
             console.log('show')
