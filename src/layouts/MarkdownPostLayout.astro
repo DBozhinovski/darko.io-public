@@ -1,18 +1,17 @@
 ---
 import BaseLayout from "./BaseLayout.astro";
-const { frontmatter, body } = Astro.props;
+const { frontmatter, body, id } = Astro.props;
 // import CtaTwo from "../components/cta/CtaTwo.astro";
 import { AstroSeo } from "@astrolib/seo";
 import { format } from "date-fns";
 import { Image } from 'astro:assets'
 import readingTime from "reading-time";
 import { findRelated } from "../utils/classifier";
-import { reference } from "astro:content";
 import EntriesTwo from "../components/entries/EntriesTwo.astro";
 
 const stats = body ? readingTime(body) : {};
 
-const related = frontmatter.tags && findRelated(frontmatter.title, frontmatter.tags, frontmatter.description, 4) || [];
+const related = frontmatter.tags && findRelated(id, frontmatter.title, frontmatter.tags, frontmatter.description, body, 3) || [];
 ---
 
 <AstroSeo
@@ -169,8 +168,7 @@ const related = frontmatter.tags && findRelated(frontmatter.title, frontmatter.t
           <div
         class="not-prose mb-20 mx-auto grid grid-cols-1 sm:grid-cols-2 gap-x-3 md:gap-x-0 gap-y-12 sm:gap-y-16 mt-12 lg:grid-cols-3 lg:divide-x md:-mx-6">
         {
-          related.slice(1, 4)
-            .map((post) => (
+          related.map((post) => (
               <EntriesTwo
                 url={"/posts/" + post.slug}
                 title={post.data.title}
