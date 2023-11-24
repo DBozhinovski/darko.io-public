@@ -185,6 +185,13 @@ declare module 'astro:content' {
 
 	type ContentEntryMap = {
 		"drafts": {
+"build-you-a-related-post-classifier.md": {
+	id: "build-you-a-related-post-classifier.md";
+  slug: "build-you-a-related-post-classifier";
+  body: string;
+  collection: "drafts";
+  data: any
+} & { render(): Render[".md"] };
 "the-case-for-agency-devex-pt2.md": {
 	id: "the-case-for-agency-devex-pt2.md";
   slug: "the-case-for-agency-devex-pt2";
@@ -220,13 +227,6 @@ declare module 'astro:content' {
 "build-you-a-corona-tracker-the-hard-way.md": {
 	id: "build-you-a-corona-tracker-the-hard-way.md";
   slug: "build-you-a-corona-tracker-the-hard-way";
-  body: string;
-  collection: "posts";
-  data: InferEntrySchema<"posts">
-} & { render(): Render[".md"] };
-"build-you-a-related-post-classifier.md": {
-	id: "build-you-a-related-post-classifier.md";
-  slug: "build-you-a-related-post-classifier";
   body: string;
   collection: "posts";
   data: InferEntrySchema<"posts">

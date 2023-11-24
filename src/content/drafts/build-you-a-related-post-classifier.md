@@ -76,3 +76,208 @@ blogEntries.forEach((entry) => {
   );
 });
 ```
+
+### 3. Exposing the related posts function
+
+With fetching and training done, all that's left is to expose a function that takes a post and returns the N most related posts. The function will take the post's `id`, `title`, `description`, `tags` and `body` as input, as those were the data we trained the TF-IDF on.
+
+We'll use the same logic as before - concatenate the post's metadata and body, and then use the TF-IDF to get the scores for each document. Then, we'll sort the scores in descending order and return the top N posts.
+
+```ts
+export const findRelated = (
+  title: string,
+  tags: string[],
+  description: string,
+  body: string,
+  topN: number = 5
+) => {
+  // Concatenate the post's metadata and body
+  const documentToCompare =
+    title + " " + description + " " + tags.join(" ") + body;
+  let scores: { index: number; score: number }[] = [];
+
+  // Get the TF-IDF scores for each document
+  tfIdf.tfidfs(documentToCompare, (i, measure) => {
+    scores.push({ index: i, score: measure });
+  });
+
+  // Sort by highest scores and return top N results
+  const topScores = scores.sort((a, b) => b.score - a.score).slice(0, topN);
+
+  // Map the indices to the actual blog entries obtained from the collections API
+  return topScores.map((score) => blogEntries[score.index]);
+};
+```
+
+With that exposed, we can now use it in our Astro components. In my case, that looks something like this:
+
+```astro
+---
+import { findRelated } from "../utils/classifier";
+
+// ...
+
+
+// Let's say we want the top 3 related posts
+const related = findRelated(id, frontmatter.title, frontmatter.tags, frontmatter.description, body, 3) || [];
+
+
+// ...
+---
+
+<div>
+{
+  related.map((post) => (
+    <RelatedPost
+      url={"/posts/" + post.slug}
+      title={post.data.title}
+      description={post.data.description}
+      alt={post.data.title}
+      pubDate={post.data.pubDate.toString().slice(0, 10)}
+      author={post.data.author}
+      image={post.data.ogImage}
+    />
+  ))
+}
+</div>
+
+
+```
+
+### The bug 🐛
+
+The results were as expected, with one glaring oversight - the first post matched is the post we're currently on. The reasons is simple - we're concatenating the post's metadata and body, and then comparing that to the same post.
+
+We can, of course, work around this easily - if we want, say the top 3 posts, we can instead fetch the top 4 instead and discard the first one. But that's a bit of a hack, and I did set out to solve this properly. So, we'll have to devise a way of identifying the post we're on and excluding it from the results.
+
+Luckily, the collections API gives us a unique `id` for each post. On the other side, the `addDocument` method of the TF-IDF accepts a second argument - a unique identifier for the document. So, we can use the post's `id` as the second argument to `addDocument`, and then use it to exclude the post from the results:
+
+```ts
+...
+blogEntries.forEach((entry) => {
+  tfIdf.addDocument(
+    `${entry.data.title} ${entry.data.description} ${entry.data.tags
+      .map((tag) => tag)
+      .join(" ")} ${entry.body}`,
+    entry.id // <-- the post's id
+  );
+});
+...
+
+export const findRelated = (
+  id: string,
+  title: string,
+  tags: string[],
+  description: string,
+  body: string,
+  topN: number = 5
+) => {
+  const documentToCompare =
+    title + " " + description + " " + tags.join(" ") + body;
+  let scores: { index: number; score: number; key: string }[] = [];
+
+  tfIdf.tfidfs(documentToCompare, (i, measure, key) => { // <-- the key is the post's id
+    scores.push({ index: i, score: measure, key: key || "" }); // <-- we store it in the scores array
+  });
+
+  const topScores = scores
+    .filter((entry) => entry.key !== id) // <-- exclude the current post
+    .sort((a, b) => b.score - a.score)
+    .slice(0, topN);
+
+  return topScores.map((score) => blogEntries[score.index]);
+};
+```
+
+Finally, the complete implementation:
+
+```ts
+import natural from "natural";
+import { getCollection } from "astro:content";
+
+const blogEntries = await getCollection("posts");
+const { TfIdf } = natural;
+const tfIdf = new TfIdf();
+
+blogEntries.forEach((entry) => {
+  tfIdf.addDocument(
+    `${entry.data.title} ${entry.data.description} ${entry.data.tags
+      .map((tag) => tag)
+      .join(" ")} ${entry.body}`,
+    entry.id
+  );
+});
+
+export const classifier = tfIdf;
+
+export const findRelated = (
+  id: string,
+  title: string,
+  tags: string[],
+  description: string,
+  body: string,
+  topN: number = 5
+) => {
+  const documentToCompare =
+    title + " " + description + " " + tags.join(" ") + body;
+  let scores: { index: number; score: number; key: string }[] = [];
+
+  tfIdf.tfidfs(documentToCompare, (i, measure, key) => {
+    scores.push({ index: i, score: measure, key: key || "" });
+  });
+
+  const topScores = scores
+    .filter((entry) => entry.key !== id)
+    .sort((a, b) => b.score - a.score)
+    .slice(0, topN);
+
+  return topScores.map((score) => blogEntries[score.index]);
+};
+```
+
+This is already good enough to copy, paste, slightly adapt and use in your own Astro project. But, this does sound like a good package for npm, doesn't it?
+
+## The package
+
+So, step 1 would be to abstract the classifier away from the Astro-specific code. Thus, the only hard dependency of the package would be `natural`.
+
+Since the functionality is not too complex, we can keep all of it in a single file which will expose two functions: `train` and `findRelated`. The `train` function will take an array of strings with ids and train the TF-IDF on them. The `findRelated` function will take a string and an id (to exclude the one we're trying to find matches for) and return the N most related strings from the collection.
+
+**Note:** I'm using the generic "string" term here, since the classifier is actually trained on concatenated strings, regardless of whether they're blog posts or not.
+
+```ts
+import natural from "natural";
+
+const { TfIdf } = pkg;
+const tfIdf = new TfIdf();
+
+interface Document {
+  id: string;
+  content: string;
+}
+
+export const train = (documents: Document[]) => {
+  documents.forEach((document) => {
+    tfIdf.addDocument(document.content, document.id);
+  });
+};
+
+export const findRelated = (
+  documentToCompare: string,
+  id: string,
+  topN: number = 5
+) => {
+  let scores: { index: number; score: number; key: string }[] = [];
+
+  tfIdf.tfidfs(documentToCompare, (i, measure, key) => {
+    scores.push({ index: i, score: measure, key: key || "" });
+  });
+
+  const topScores = scores
+    .filter((entry) => entry.key !== id)
+    .sort((a, b) => b.score - a.score)
+    .slice(0, topN);
+
+  return topScores.map((score) => score.key);
+};
+```

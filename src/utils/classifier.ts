@@ -5,15 +5,12 @@ const blogEntries = await getCollection("posts");
 const { TfIdf } = pkg;
 const tfIdf = new TfIdf();
 
-const idMap: { id: string; index: number }[] = [];
-
-blogEntries.forEach((entry, index) => {
-  idMap.push({ id: entry.id, index: index });
-
+blogEntries.forEach((entry) => {
   tfIdf.addDocument(
     `${entry.data.title} ${entry.data.description} ${entry.data.tags
       .map((tag) => tag)
-      .join(" ")} ${entry.body}`
+      .join(" ")} ${entry.body}`,
+    entry.id
   );
 });
 
@@ -29,17 +26,15 @@ export const findRelated = (
 ) => {
   const documentToCompare =
     title + " " + description + " " + tags.join(" ") + body;
-  let scores: { index: number; score: number }[] = [];
+  let scores: { index: number; score: number; key: string }[] = [];
 
-  const indexInMap = idMap.find((entry) => entry.id === id)?.index;
-
-  tfIdf.tfidfs(documentToCompare, (i, measure) => {
-    scores.push({ index: i, score: measure });
+  tfIdf.tfidfs(documentToCompare, (i, measure, key) => {
+    scores.push({ index: i, score: measure, key: key || "" });
   });
 
   // Sort by highest scores and return top N results
   const topScores = scores
-    .filter((entry) => entry.index !== indexInMap)
+    .filter((entry) => entry.key !== id)
     .sort((a, b) => b.score - a.score)
     .slice(0, topN);
 
