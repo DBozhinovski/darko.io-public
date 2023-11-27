@@ -14,6 +14,15 @@ blogEntries.forEach((entry) => {
   );
 });
 
+const posts = await getCollection("posts");
+
+const postsData = posts.map((entry) => ({
+  id: entry.id,
+  content: `${entry.data.title} ${entry.data.description} ${entry.data.tags
+    .map((tag) => tag)
+    .join(" ")} ${entry.body}`,
+}));
+
 export const classifier = tfIdf;
 
 export const findRelated = (
