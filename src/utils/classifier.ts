@@ -1,29 +1,17 @@
-import pkg from "natural";
 import { getCollection } from "astro:content";
 
+import { train, findRelated as find } from "relatinator";
+
 const blogEntries = await getCollection("posts");
-const { TfIdf } = pkg;
-const tfIdf = new TfIdf();
 
-blogEntries.forEach((entry) => {
-  tfIdf.addDocument(
-    `${entry.data.title} ${entry.data.description} ${entry.data.tags
-      .map((tag) => tag)
-      .join(" ")} ${entry.body}`,
-    entry.id
-  );
-});
-
-const posts = await getCollection("posts");
-
-const postsData = posts.map((entry) => ({
+const trainingData = blogEntries.map((entry) => ({
   id: entry.id,
   content: `${entry.data.title} ${entry.data.description} ${entry.data.tags
     .map((tag) => tag)
     .join(" ")} ${entry.body}`,
 }));
 
-export const classifier = tfIdf;
+train(trainingData);
 
 export const findRelated = (
   id: string,
@@ -35,20 +23,8 @@ export const findRelated = (
 ) => {
   const documentToCompare =
     title + " " + description + " " + tags.join(" ") + body;
-  let scores: { index: number; score: number; key: string }[] = [];
 
-  tfIdf.tfidfs(documentToCompare, (i, measure, key) => {
-    scores.push({ index: i, score: measure, key: key || "" });
-  });
+  const res = find(documentToCompare, id, topN);
 
-  // Sort by highest scores and return top N results
-  const topScores = scores
-    .filter((entry) => entry.key !== id)
-    .sort((a, b) => b.score - a.score)
-    .slice(0, topN);
-
-  console.log(topScores);
-
-  // Map the indices to the actual blog entries
-  return topScores.map((score) => blogEntries[score.index]);
+  return res.map((id) => blogEntries.find((entry) => entry.id === id));
 };
