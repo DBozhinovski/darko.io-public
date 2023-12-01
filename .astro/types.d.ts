@@ -252,6 +252,13 @@ declare module 'astro:content' {
   collection: "posts";
   data: InferEntrySchema<"posts">
 } & { render(): Render[".md"] };
+"linktree-and-linkinbio-clone-with-astro-and-tinacms.md": {
+	id: "linktree-and-linkinbio-clone-with-astro-and-tinacms.md";
+  slug: "linktree-and-linkinbio-clone-with-astro-and-tinacms";
+  body: string;
+  collection: "posts";
+  data: InferEntrySchema<"posts">
+} & { render(): Render[".md"] };
 "offline-chatbot-pt1.md": {
 	id: "offline-chatbot-pt1.md";
   slug: "offline-chatbot-pt1";
