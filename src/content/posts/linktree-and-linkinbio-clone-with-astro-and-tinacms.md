@@ -1,7 +1,7 @@
 ---
 author: Darko Bozhinovski
 title: "Quick-and-useful: A DIY, self-hosted Linktree and Linkinbio clone with Astro and TinaCMS"
-pubDate: 2023-11-30
+pubDate: 2023-12-01
 tags: ["astro", "tinacms", "quick-and-useful"]
 description: "Quick-and-useful, part 2: A self-hosted Linktree and Linkinbio clone based on Astro with a user-friendly edit interface."
 ogImage: "/ltree.png"
