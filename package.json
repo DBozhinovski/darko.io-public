@@ -21,7 +21,7 @@
     "@jsdevtools/rehype-toc": "^3.0.2",
     "@resvg/resvg-js": "^2.6.0",
     "astro": "^4.0.3",
-    "astro-relatinator": "^1.0.3",
+    "astro-relatinator": "^1.0.4",
     "astro-webmanifest": "^1.0.0",
     "date-fns": "^2.30.0",
     "mdast-util-to-string": "^4.0.0",
