@@ -1,17 +1,17 @@
 import { getCollection } from "astro:content";
 
-import { train, findRelated as find } from "relatinator";
+import { findRelated as find, tfIdf } from "astro-relatinator";
 
 const blogEntries = await getCollection("posts");
 
-const trainingData = blogEntries.map((entry) => ({
-  id: entry.id,
-  content: `${entry.data.title} ${entry.data.description} ${entry.data.tags
-    .map((tag) => tag)
-    .join(" ")} ${entry.body}`,
-}));
+// const trainingData = blogEntries.map((entry) => ({
+//   id: entry.id,
+//   content: `${entry.data.title} ${entry.data.description} ${entry.data.tags
+//     .map((tag) => tag)
+//     .join(" ")} ${entry.body}`,
+// }));
 
-train(trainingData);
+// train(trainingData);
 
 export const findRelated = (
   id: string,
