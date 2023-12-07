@@ -10,89 +10,8 @@ import fs from "node:fs";
 import parseFrontmatter from "gray-matter";
 import tokyoNightStorm from "./tokyo-night-storm.json";
 import relatinatorIntegration from "astro-relatinator";
-// ----------------------------
-// import type { AstroIntegration } from "astro";
-// import path from "node:path";
-// import { train, findRelated, tfIdf } from "relatinator";
-// import { glob } from "glob";
-// import { promisify } from "node:util";
-// import matter from "gray-matter";
-// ----------------------------
 
-// interface Document {
-//   id: string;
-//   content: string;
-// }
-
-// const readFilePromise = promisify(fs.readFile);
-
-// async function trainModel(paths: string[]) {
-//   let documents: Document[] = [];
-
-//   if (tfIdf.documents) {
-//     if ((tfIdf.documents as unknown as any[]).length > 0) {
-//       // @ts-ignore
-//       tfIdf.documents = [];
-//       // @ts-ignore
-//       tfIdf.documents.length = -1;
-//     }
-//   }
-
-//   for (const path of paths) {
-//     const markdownFiles = await glob(`${path}/**/*.{md,mdx}`);
-
-//     // console.log(markdownFiles);
-
-//     for (const file of markdownFiles) {
-//       const content = await readFilePromise(file, "utf-8");
-//       const parsed = matter(content);
-//       const idArr = file.split("/");
-//       const id = idArr[idArr.length - 1];
-
-//       documents.push({
-//         id,
-//         content: `${parsed.data.title} ${
-//           parsed.data.description
-//         } ${parsed.data.tags.join(" ")} ${parsed.content}`,
-//       });
-//     }
-//   }
-
-//   train(documents);
-// }
-
-// // id = filename?
-// const relatinatorIntegration = ({
-//   paths,
-// }: {
-//   paths: string[];
-// }): AstroIntegration => {
-//   return {
-//     name: "astro-relatinator",
-//     hooks: {
-//       "astro:server:setup": async ({ server, logger }) => {
-//         logger.info("relatinator server:setup");
-
-//         await trainModel(paths);
-
-//         server.watcher.on("all", async (eventName, filePath) => {
-//           if (!["add", "change"].includes(eventName)) {
-//             return;
-//           }
-
-//           if (path.extname(filePath).includes("md")) {
-//             logger.info(`relatinator file change: ${eventName}, ${filePath}`);
-//             await trainModel(paths);
-//           } else {
-//             return;
-//           }
-//         });
-//       },
-//     },
-//   };
-// };
-
-const render = (title) => ({
+const render = (title: string) => ({
   type: "div",
   props: {
     style: {
@@ -245,7 +164,6 @@ const og = () => ({
 // https://astro.build/config
 export default defineConfig({
   markdown: {
-    drafts: true,
     shikiConfig: {
       wrap: true,
       theme: {
@@ -270,16 +188,8 @@ export default defineConfig({
     mdx(),
     solidJs(),
     webmanifest({
-      /**
-       * required
-       **/
       name: "Darko's Corner",
-
-      /**
-       * optional
-       **/
-      icon: "src/assets/favicon.svg", // source for favicon & icons
-
+      icon: "src/assets/favicon.svg",
       short_name: "Darko's Corner",
       description:
         "Darko's Corner is a blog about web development, community, content creation and much more!",
@@ -291,6 +201,7 @@ export default defineConfig({
     og(),
     relatinatorIntegration({
       paths: ["./src/content/posts"],
+      schema: ["title", "description", "tags"],
     }),
   ],
 });
